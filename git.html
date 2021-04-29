@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>git.utf8.md</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Reproducible research in R</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="rmarkdown.html">Rmarkdown</a>
+</li>
+<li>
+  <a href="git.html">GitHub</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+
+</div>
+
+
+<div id="version-control-systems" class="section level1">
+<h1>Version Control Systems</h1>
+<p>A version control system is a system which keeps track of the history/changes/versions of a file making it easier for multiple people to work on the same project at the same time. This gives them the possibility of comparing changes between different versions of the file, move back to an previous version of a file if needed, keep track on who,when and why someone in the team made changes to a file. <!--animation of versioning --> <!--http://swcarpentry.github.io/git-novice/01-basics/index.html--></p>
+<p>This system is popular in the software development industry as it allows teams to have a common location or <strong>repository</strong> where all the source code/files in the project are kept and thus are able to work on an updated version of the project.</p>
+<p>Version control systems are also popular as they prevent the situation of loosing all your work if your computer breaks down. Most probably you have already been using a kind of version control without realising by renaming your files.</p>
+<p><img src="img/phdcomic.png" /> <!--http://phdcomics.com/comics.php?f=1531--></p>
+<p>A version control system will be keeping versions for each file in the repository behind the scenes, so you do not need to worry about renaming files, etc…</p>
+<p>Version control systems are often categorised as either <strong>centralised</strong> version control systems or <strong>distributed</strong> version control systems.</p>
+<p> </p>
+<div id="centralised-version-control-systems" class="section level2">
+<h2>Centralised Version Control Systems</h2>
+<p>A centralised version control system has only one copy of the project held in a central place (server) which also keeps track of the files’ history (versions). The people working on the project would be able to <strong>commit</strong> or make changes to the central server. Normally multiple people are not able to work on the same file simultaneously. <!-- They normally also have the file locking feature so that if multiple users are trying to modify the same file they are warned --> Examples of centralised version control systems are CVS and Subversion (SVN). Distributed version control systems are becoming increasingly more popular as they overcome some of the limitations imposed by centralised version control systems.</p>
+<div class="figure">
+<img src="img/centralised-vcs.png" alt="Image from https://homes.cs.washington.edu/~mernst/advice/version-control.html" />
+<p class="caption">Image from <a href="https://homes.cs.washington.edu/~mernst/advice/version-control.html" class="uri">https://homes.cs.washington.edu/~mernst/advice/version-control.html</a></p>
+</div>
+<p> </p>
+</div>
+<div id="distributed-version-control-systems" class="section level2">
+<h2>Distributed Version Control Systems</h2>
+<p>In a distributed version control system each person in a team working on the project makes a copy or <strong>clones</strong> the repository on their own computer which also includes the full history of the different files inside the repository. Thus if a server dies, it would be able to be restored back from the copies of the repositories held by the different people in the team.</p>
+<p>In this course we will be learning about <strong>git</strong> which is an example of a distributed version control system.<br />
+<img src="img/distributed-vcs.png" alt="Image from https://homes.cs.washington.edu/~mernst/advice/version-control.html" /></p>
+<p> </p>
+</div>
+</div>
+<div id="what-is-github" class="section level1">
+<h1>What is Github?</h1>
+<p>It is important to distinguish between git and GitHub. git is the version control system - the tool needed to keep track of your files/repositories history. On the other hand, GitHub is a hosting platform where you can keep your files/repositories in.</p>
+<p>The best way to understand this clearly is by seeing this in action and working through an example together. There are several ways you can keep versions of your files through git and GitHub and we will be looking at two popular ways in this course; using the GitHub website and using Rstudio.</p>
+<p> </p>
+</div>
+<div id="version-control-through-the-github-website" class="section level1">
+<h1>Version Control through the GitHub website</h1>
+<p>In this section we will use GitHub and manage our project online without using any coding.</p>
+<p>The first step is to create a repository. The slides below provide step by step instructions on how to do this.</p>
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQ0VHWripOuP0wNye8q-HpIHfLGAQSi_QTlrcEAIET8kSx8g3XDY83201-OVg4muCdZIr4-CcQ21iFr/embed?start=false&amp;loop=false&amp;delayms=3000" frameborder="0" width="820" height="480" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true">
+</iframe>
+<p>After this example we have now a repository in place where anyone can see the files.</p>
+<p> </p>
+</div>
+<div id="project-management-in-github" class="section level1">
+<h1>Project management in GitHub</h1>
+<p>GitHub integrates project management features to help its users manage their repositories. This is especially helpful if these involve the collaboration of more than one person. As the name suggests, project management allows the initiating, planning, executing, controlling, and closing the work of a team to achieve specific goals at the specified time [<a href="https://en.wikipedia.org/wiki/Project_management">Wikipedia</a>]. More information on Project Management on GitHub can be found at:</p>
+<ul>
+<li><a href="https://github.com/features/project-management">https://github.com/features/project-management</a></li>
+<li><a href="https://help.github.com/en/github/managing-your-work-on-github">https://help.github.com/en/github/managing-your-work-on-github</a></li>
+</ul>
+<p><br />
+</p>
+<div id="adding-collaborators" class="section level2">
+<h2>Adding Collaborators</h2>
+<p>If you are working on a project in a team or with collaborators than it would be more useful to either add collaborators to your repository or else create an organisation and add members to your organisation. Creating an organisation in GitHub is useful if you want to manage access to the different team individuals and when you have more than one repository. More information about how to setup an Organisation on GitHub can be found <a href="https://help.github.com/en/github/setting-up-and-managing-organizations-and-teams">here</a>. In this course we will be looking at how to add collaborators to your repository.</p>
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vR_Hmo4XUWHTIgVAY7clbFIPRvO-FVLfJMxBT4D5JjgiT34RhteOBP_qn9Vp8oXRPQtObnqbqmKG-ek/embed?start=false&amp;loop=false&amp;delayms=3000" frameborder="0" width="820" height="480" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true">
+</iframe>
+<p><br />
+</p>
+</div>
+<div id="issues" class="section level2">
+<h2>Issues</h2>
+<p>In GitHub, Issues are created to suggest an idea, improvements or keep track of bugs, in other words, it can be viewed as a task list for the project. The steps involved to create an Issue on GitHub are:</p>
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRAAAzpAWQTFhcSxq4Vtz0Z_XrXam5ZykWXA56BaucHwCjrJeESPyv37yjhD1SGDR1gcw9ac7rA2SUi/embed?start=false&amp;loop=false&amp;delayms=3000" frameborder="0" width="820" height="480" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true">
+</iframe>
+<p><br />
+</p>
+</div>
+<div id="project-board" class="section level2">
+<h2>Project Board</h2>
+<p>GitHub provides project boards to help manage the issues and other tasks related to the project. GitHub allows the user to specify a project template for the project board (details of the different templates can be found <a href="https://help.github.com/en/github/managing-your-work-on-github/about-project-boards#templates-for-project-boards">here</a>). One of the most popular style of project management methodolody is <strong>Kanban</strong>. Kanban is an agile methodology where the testing and build phase are integrated in the same iteration as programming rather than having them as separate phases as done in traditional methodologies. In its simple form, the Kanban methodology is a kanban board composed of 3 columns:</p>
+<ol style="list-style-type: decimal">
+<li>To do</li>
+<li>In progress</li>
+<li>Done</li>
+</ol>
+<p>The tasks in a project are represented by cards, with each card representing one task. The tasks start from the first column (To do) and they are pulled along the right (subsequent columns) as the task progresses through the workflow (known as a pull system). The Kanban method focuses on having a work in progress list as small as possible so that the workforce is focused on finishing tasks with high priority. It is also emphasises on representing the tasks visually on the kanban board, allowing team members to see the status of the project at any time. If you are interested to understand the Kanban methodology better there are a good set of short videos about this <a href="https://www.atlassian.com/agile/kanban">here</a>.</p>
+<p>Let us try to create a project board on GitHub together:</p>
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vS02IyjD_9w1NCk7RNmGsLKnAtlTrDNg-5q9cGrv3fuazMY7i3ZuU-A2GMn_qhXttQwea0YyrBUIEsV/embed?start=false&amp;loop=false&amp;delayms=3000" frameborder="0" width="820" height="420" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true">
+</iframe>
+<p>More information about project boards on GitHub can be found at <a href="https://help.github.com/en/github/managing-your-work-on-github/managing-project-boards">https://help.github.com/en/github/managing-your-work-on-github/managing-project-boards</a>.</p>
+<p><br />
+</p>
+</div>
+<div id="the-github-flow" class="section level2">
+<h2>The GitHub flow</h2>
+<!-- this needs updating with the status of the project board -->
+<!-- https://nvie.com/posts/a-successful-git-branching-model/ -->
+<p>Making changes to a repository that only yourself is contributing to is one thing. However, when working in teams especially one which involves a large number of people where everyone is making changes to the same repository you want to have a stable <strong>branch</strong> in place.</p>
+<p>A <strong>branch</strong> means a copy of your repository where you can make changes to without getting worried that you will do something wrong that will effect the remaining of the team. Therefore you are free to experiment on your own branch. There are several different workflows, <em>e.g.,</em> git-flow, GitHub flow and GitLab flow.</p>
+<p>It is not the scope of this course to get into details about the different software development versioning models. However, we will look briefly at GitHub flow which is one of the simple workflows available, with the aim to understand the basic constructs of software development versioning models so that we can adopt some good practices when sharing code or working in teams.</p>
+<!-- https://githubflow.github.io/ -->
+<!-- https://guides.github.com/introduction/flow/ -->
+<!-- https://flowcanon.com/software/choosing-the-best-git-branching-strategy-for-your-team/ -->
+<p>The GitHub flow steps consist of the following:</p>
+<ul>
+<li><p><strong>Anything in the <code>master</code> branch is deployable</strong>: The <code>master</code> branch is the main branch which reflects what is deployed. Therefore the master should always be in a ready state and stable.</p></li>
+<li><p><strong>Create a branch</strong>: If you want to make changes to the files present in the <code>master</code> branch create a new branch off of the <code>master</code> branch; we will refer to this as a <code>feature</code> branch. Name this <code>feature</code> branch with a descriptive name that reflects the change that you would like to do <em>e.g.</em> <code>fix-issue1</code>, <code>add-chapter1</code>. By creating a new <code>feature</code> branch off the <code>master</code> branch, you can safely do any changes you want without worrying of breaking the <code>master</code> branch. When you create a branch from your master branch, you’re creating a copy of of the master repository where you can add your new features or try out new ideas without effecting the master repository.</p></li>
+<li><p><strong>Make changes to the files and then commit to the <code>feature</code> branch</strong>. Adding commits to the <code>feature</code> branch is important as it keeps track of the updates that you do to your files and also the reason why they were made (make sure you write clear commit messages). The creation of a <code>feature</code> branch allows us to keep track of any changes that are done and compare the difference between the <code>master</code> and the <code>feature</code> branch. In this way you can have multiple people working on different things at the same time. As you have a stable <code>master</code> branch and all the other existant branches are fixes or updates that are work-in-progress to the project. Committing changes to the <code>feature</code> branch is also important as it helps you back up your work in case of a system failure or loss.</p></li>
+<li><p><strong>Open a pull request</strong>: Once you have tested the changes you have applied on your code to make sure that everything is running well and you are happy with the changes/commits done on the <code>feature</code> branch, the next step is to propose these changes to be submitted into the <code>master</code> branch for someone to review your work. This is done by creating a <strong>pull request</strong>. You can use the <code>@mention</code> system on GitHub to bring this to attention to specific people.</p></li>
+<li><p><strong>Discussion and review</strong>: The whole idea is that when you create a new pull request, this will enable a process of discussion and feeback about the changes being proposed back and forth between the maintainers of the master branch and yourself (the person that created the pull request). If you need to make additional changes to your <code>feature</code> branch after discussion, you can commit the changes to the <code>feature</code> branch again and then push the change. Pull requests can be written in Markdown so you can easily add images and other markdown formatting.</p></li>
+<li><p><strong>Merge</strong>: Now that the code and files you have committed have passed all your testing, you can merge the changes to the existing <code>master</code> repository so that now they form part of the <code>master</code> repository. The good thing about all this process is that all the changes made during this process are preserved and anyone can track changes made in each merge and why they were made.</p></li>
+</ul>
+<p>Let us do this whole process in action on GitHub!</p>
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQPhU3xOFvFnb-gNhrW2dotoz7BIcrKaBe6fpTMjvBbp3egSXtZUw9J6UcfwuZV21m_JO4Xd5BtQ0Ne/embed?start=true&amp;loop=true&amp;delayms=3000" frameborder="0" width="820" height="480" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true">
+</iframe>
+<p> </p>
+<div id="git-with-rstudio" class="section level3">
+<h3>Git with RStudio</h3>
+<p>So far we have learned how to do the main GitHub operations directly on GitHub. We will now will look how we can perform the same operations in RStudio. Why do you want to do this in RStudio? If you are writing your code in R, it will make more sense to use the inbuilt RStudio integration of git, in this way you do not need to switch back and forth to GitHub.</p>
+<div id="practical-in-the-classroom" class="section level4">
+<h4>Practical in the classroom</h4>
+<!--
+Follow this tutorial to commit changes through RStudio:
+http://www.geo.uzh.ch/microsite/reproducible_research/post/rr-rstudio-git/
+
+
+https://sarahlrstevens.info/git-novice-mod/14-supplemental-rstudio/
+https://www.nceas.ucsb.edu/~brun/RStudio_intro/2-getting-started-with-git-in-RStudio.html
+https://audhalbritter.com/wp-content/uploads/2016/12/Github-%E2%80%93-R-studio-Cheat-Sheet.pdf
+https://www.youtube.com/watch?v=E2d91v1Twcc
+
+-->
+</div>
+</div>
+</div>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3,h4,h5,h6",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

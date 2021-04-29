@@ -1,0 +1,38 @@
+---
+title: "Reproducible Research in R"
+author:  Alexia Cardona
+---
+
+<br/>
+18 February 2020 
+
+Bioinformatics Training Facility
+
+**Instructor:** Alexia Cardona, Paul Judge, Martin van Rongen
+
+<br/>
+
+### Description
+
+This course introduces concepts about reproducibility that can be used when you are programming in R. We will explore how to create notebooks - a way to integrate your R analyses into reports using Rmarkdown. The course also introduces the concept of version control. We will learn how to create a repository on GitHub and how to work together on the same project collaboratively without creating conflicting versions of files.
+
+\  
+
+### Prerequisites
+
+The [Introduction to R for Biologists](https://training.csx.cam.ac.uk/bioinformatics/course/bioinfo-introRbio) course and/or have a working knowledge of R.
+
+\  
+
+### Sessions
+
+1. [Rmarkdown/ R notebooks](rmarkdown.html)
+2. [GitHub](git.html)
+
+
+
+
+
+
+
+

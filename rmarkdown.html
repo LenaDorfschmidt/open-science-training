@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>rmarkdown.utf8.md</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Reproducible research in R</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="rmarkdown.html">Rmarkdown</a>
+</li>
+<li>
+  <a href="git.html">GitHub</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+
+</div>
+
+
+<div id="rstudio" class="section level1">
+<h1>RStudio</h1>
+<p>We will be using RStudio both for this Rmarkdown session and also during the GitHub session. RStudio is currently a very popular Integrated Development Environment (IDE) for working with R. An IDE is an application used by software developers that faciliates programming by offering source code editing, building and debugging tools all integarated into one application. To function correctly, RStudio needs R and therefore both need to be installed on your computer.</p>
+<p>The RStudio Desktop open-source product is free under the <a href="https://www.gnu.org/licenses/agpl-3.0.en.html">Affero General Public License (AGPL) v3</a>. <a href="https://www.rstudio.com/products/rstudio/">Other versions of RStudio</a> are also available.</p>
+<p>We will use RStudio IDE to write code, navigate the files on our computer, inspect the variables we are going to create, and visualize the plots, tables and the notebooks that we will generate. RStudio can also be used for version control and we will be looking at this later on.</p>
+<div class="figure">
+<img src="img/rstudio-screenshot.png" alt="RStudio interface screenshot. Clockwise from top left: Source, Environment/History, Files/Plots/Packages/Help/Viewer, Console." />
+<p class="caption">RStudio interface screenshot. Clockwise from top left: Source, Environment/History, Files/Plots/Packages/Help/Viewer, Console.</p>
+</div>
+<p>RStudio is divided into 4 “Panes”: the <strong>Source</strong> for your scripts and documents (top-left, in the default layout), your <strong>Environment/History/Build/Git</strong> (top-right), your <strong>Files/Plots/Packages/Help/Viewer</strong> (bottom-right), and the R <strong>Console</strong> (bottom-left). The placement of these panes and their content can be customized (see menu, Tools -&gt; Global Options -&gt; Pane Layout).</p>
+<p>One of the advantages of using RStudio is that all the information you need to write code is available in a single window. Additionally, with many shortcuts, autocompletion, and highlighting for the major file types you use while developing in R, RStudio will make typing easier and less error-prone.</p>
+<p> </p>
+</div>
+<div id="creating-an-rmarkdown-project" class="section level1">
+<h1>Creating an Rmarkdown project</h1>
+<p>Before starting to write code in RStudio, we need to create an R Project. The idea behind an R project is to have a workspace where you can keep all the files and settings associated with the project together. In that way, next time you open the R Project it would be easier to resume work. To create an R notebook project for the web in RStudio follow the following steps:</p>
+<ol style="list-style-type: decimal">
+<li><code>File</code> -&gt; <code>New Project</code> -&gt; <code>New Directory</code> -&gt; <code>Simple Rmarkdown website</code>.</li>
+<li>Specify where you would like to create your project. This would be your <strong>working directory</strong>.<br />
+</li>
+<li>Click <code>Create Project</code>.</li>
+</ol>
+<p>RStudio automatically generates a template for you to develop further. To see how this template would look as a website, click on the <code>Build</code> tab on the top right hand side pane of RStudio and then click <code>Build Website</code>.</p>
+<p><img src="img/build-website.png" width="400"/></p>
+<p>RStudio’s default preferences generally work well, but saving a workspace to <code>.RData</code> can be cumbersome, especially if you are working with larger datasets as this would save all the data that is loaded into R into the <code>.RData</code> file.<br />
+To turn that off, go to <code>Tools</code> -&gt; <code>Global Options</code> and select the ‘Never’ option for <code>Save workspace to .RData' on exit.</code></p>
+<div class="figure">
+<img src="img/rstudio-preferences.png" alt="Set ‘Save workspace to .RData on exit’ to ‘Never’" />
+<p class="caption">Set ‘Save workspace to .RData on exit’ to ‘Never’</p>
+</div>
+<p> </p>
+<div id="working-directory" class="section level2">
+<h2>Working directory</h2>
+<p>Whenever we are working on a project in RStudio, it is good practice to keep a set of related files <em>e.g.,</em> data, images, and code, self-contained in a single folder, called the <strong>working directory</strong>. All of the scripts within this folder can then use <strong>relative paths</strong> to files in the working directory that indicate where inside the project a file is located (as opposed to <strong>absolute paths</strong>, which point to where a file is on a specific computer). Working this way makes it a lot easier to move your project around on your computer and share it with others without worrying about whether or not the underlying scripts will still work.</p>
+<blockquote>
+<p><strong>Absolute vs Relative paths examples</strong></p>
+<p><strong>Relative path</strong>: data/dataset1.txt</p>
+<p><strong>Absolute path</strong>: C:/Users/User1/Documents/R/my-first-project/<strong>data/dataset1.txt</strong></p>
+</blockquote>
+<p>Using RStudio projects makes it easy to organise your files in the project and ensures that your working directory is set properly. RStudio shows your current working directory at the top of your window: <img src="img/rstudio-wd.png" alt="’" /></p>
+<p>Another way to check your working directory is by typing <code>getwd()</code> in the console pane. If for some reason your working directory is not what it should be, you can change it in the RStudio interface by navigating in the file browser where your working directory should be, and clicking on the blue gear icon <code>More</code>, and select <code>Set As Working Directory</code>. Alternatively you can type <code>setwd("/path/to/working/directory")</code> in the console to reset your working directory (not recommended). However, your scripts should not include this line because it will fail on someone else’s computer.</p>
+<p>Using a consistent folder structure across your projects will help keep things organized, and will also make it easy to find things in the future. This can be especially helpful when you have multiple projects. In general, you may create directories (folders) for <strong>data</strong>, and <strong>images</strong>.</p>
+<ul>
+<li><strong><code>data/</code></strong> Use this folder to store your raw data and intermediate datasets you may create for the need of a particular analysis. For the sake of transparency and <a href="https://en.wikipedia.org/wiki/Provenance">provenance</a>, you should <em>always</em> keep a copy of your raw data accessible and do as much of your data cleanup and preprocessing programmatically (<em>i.e.,</em> with scripts, rather than manually). Separating raw data from processed data is also a good idea. For example, you could have files <code>data/raw/survey.plot1.txt</code> and <code>data/raw/survey.plot2.txt</code> kept separate from a <code>data_output/survey.csv</code> file generated by the <code>scripts/01.preprocess.survey.R</code> script.</li>
+<li><strong><code>img/</code></strong> This would be a place to keep figures that you would like to display in your notebook.</li>
+<li><strong><code>scripts/</code></strong> This would be the location to keep your R scripts for different analyses or plotting.</li>
+</ul>
+<p>You may want additional directories or subdirectories depending on your project needs, but these should form the backbone of your working directory.</p>
+<p>The working directory is an important concept to understand. It is the place from where R will be looking for and saving the files. When you write code for your project, it should refer to files in relation to the root of your working directory and only need files within this structure.</p>
+<p><br />
+</p>
+</div>
+</div>
+<div id="rmarkdown" class="section level1">
+<h1>Rmarkdown</h1>
+<p>An Rmarkdown file is made up of 3 basic components:</p>
+<ul>
+<li>header</li>
+<li>markdown</li>
+<li>R code chunks</li>
+</ul>
+<p>In this course we will assume that the output of our report is an .html file. HTML files are files for web pages. This means that the report that we will generate can be easily deployed on the web.</p>
+<div id="rmarkdown-header" class="section level2">
+<h2>Rmarkdown header</h2>
+<p>The markdown document starts with an optional header in YAML format known as the YAML metadata. In the example below the title, author and date are specified in the header. Other options can be specified in the header such as table of content which we will look at later on in the course.</p>
+<pre><code>---
+title: &quot;My first notebook&quot;
+author:  Alexia Cardona
+date: 18 February 2020
+---</code></pre>
+<blockquote>
+<p><strong>Hint</strong></p>
+<p>Press the <img src="img/knit.png" width="90"/> button to see how the report will look like after you make changes to the .Rmd file.</p>
+</blockquote>
+<p> </p>
+</div>
+<div id="markdown-header" class="section level2">
+<h2>Markdown</h2>
+<p>The text following the header in an Rmarkdown file is in Markdown syntax. This is the syntax that gets converted to HTML format once we click on the Knit button or the Build website button. The philosophy behind Markdown is that it should be easy to write and easy to read.</p>
+<p>The full documentation of the Markdown syntax can be found at <a href="https://pandoc.org/MANUAL.html" class="uri">https://pandoc.org/MANUAL.html</a>. However this can be a bit difficult to follow for beginners, therefore below is a simplified version of the Markdown syntax.</p>
+<p> </p>
+<div id="headings" class="section level3">
+<h3>Headings</h3>
+<p>Below is the <code>Markdown code</code> you need to use to specify headings at different levels and the rendered output respectively below the code:</p>
+<p><code># Heading 1</code></p>
+<p style="font-weight:500; font-size:34px">
+Heading 1
+</p>
+<p><code>## Heading 2</code></p>
+<p style="font-weight:500; font-size:30px">
+Heading 2
+</p>
+<p><code>### Heading 3</code></p>
+<p style="font-weight:500; font-size:24px">
+Heading 3
+</p>
+<p><code>#### Heading 4</code></p>
+<p style="font-weight:500; font-size:18px">
+Heading 4
+</p>
+<p> </p>
+</div>
+<div id="inline-text-formatting" class="section level3">
+<h3>Inline text formatting</h3>
+<p>To make text <strong>bold</strong> use <code>**double asterisks**</code> or <code>__double underscores__</code>.<br />
+To make text <em>italic</em> use <code>*asterisks*</code> or <code>_underscores_</code>.<br />
+To make text <sup>superscript</sup> use <code>^caret^</code>.<br />
+To make text <sub>subscript</sub> use <code>~tilde~</code>.<br />
+To mark text as <code>inline code</code> use <code>`backticks`</code>.<br />
+To <del>strikethrough</del> text use <code>~~double tilde~~</code>.</p>
+<p><br />
+</p>
+</div>
+<div id="line-breaks" class="section level3">
+<h3>Line breaks</h3>
+<p>To create a line break, put more than 2 spaces at the end of a sentence or place <code>\</code> in a new line followed by a new line <img src="img/enter.png" width="20"/>.</p>
+<p><br />
+</p>
+</div>
+<div id="links" class="section level3">
+<h3>Links</h3>
+<div id="linking-text-to-headers" class="section level4">
+<h4>Linking text to Headers</h4>
+<p>To link text to a header you would need to specify an identification tag next to a header as follows:</p>
+<p><code># Markdown {#markdown-header}</code></p>
+<p>Then to link text to this header use <code>[link to header](#markdown-header)</code>. This will be rendered as <a href="#markdown-header">link to header</a>.</p>
+<p><br />
+</p>
+</div>
+<div id="linking-text-to-a-webpage" class="section level4">
+<h4>Linking text to a webpage</h4>
+<p>To create a link to a webpage use <code>[text of link](https://training.cam.ac.uk/bioinformatics/event-timetable)</code>. This is rendered as <a href="https://training.cam.ac.uk/bioinformatics/event-timetable">text of link</a>.</p>
+<p><br />
+</p>
+</div>
+<div id="footnotes" class="section level4">
+<h4>Footnotes</h4>
+<p>To indicate a footnote use<code>[^1]</code> and, for example, indicate another one as<code>[^2]</code> and then specify the wordings of the footnotes as:</p>
+<p><code>[^1]: This is the first footnote.</code><br />
+<code>[^2]: This is the second footnote.</code></p>
+<p>You do not need to put footnotes at the end of the document for them to be rendered there. This example is rendered as follows:</p>
+<p>To indicate a footnote use<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> and, for example, indicate another one as<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> and then specify the wordings of the footnotes as:</p>
+<p><br />
+</p>
+</div>
+</div>
+<div id="lists" class="section level3">
+<h3>Lists</h3>
+<div id="ordered-lists" class="section level4">
+<h4>Ordered lists</h4>
+<p>To create an ordered list use the following syntax:</p>
+<pre><code>1. Item 1
+2. Item 2
+3. Item 3</code></pre>
+<p>This is rendered as:</p>
+<ol style="list-style-type: decimal">
+<li>Item 1</li>
+<li>Item 2</li>
+<li>Item 3</li>
+</ol>
+<p>Use 4 spaces to indent an item if you would like to have sub-lists:</p>
+<pre><code>1. Item 1
+2. Item 2
+3. Item 3
+    a. Item 3a
+        i.  Item 3ai
+        ii. Item 3aii
+    b. Item 3b
+    c. Item 3c
+4. Item 4</code></pre>
+<ol style="list-style-type: decimal">
+<li>Item 1</li>
+<li>Item 2</li>
+<li>Item 3
+<ol style="list-style-type: lower-alpha">
+<li>Item 3a
+<ol style="list-style-type: lower-roman">
+<li>Item 3ai</li>
+<li>Item 3aii</li>
+</ol></li>
+<li>Item 3b</li>
+<li>Item 3c</li>
+</ol></li>
+<li>Item 4</li>
+</ol>
+<p><br />
+</p>
+</div>
+<div id="unordered-lists" class="section level4">
+<h4>Unordered lists</h4>
+<p>In an unordered bulletted list, each item begins with <code>*</code>, <code>+</code> or <code>-</code>. Example:</p>
+<pre><code>* Item 1
+* Item 2
+* Item 3
+    * Item 3a
+        *  Item 3ai
+        * Item 3aii
+    * Item 3b
+    * Item 3c
+* Item 4</code></pre>
+<p>Will be rendered as:</p>
+<ul>
+<li>Item 1</li>
+<li>Item 2</li>
+<li>Item 3
+<ul>
+<li>Item 3a
+<ul>
+<li>Item 3ai</li>
+<li>Item 3aii</li>
+</ul></li>
+<li>Item 3b</li>
+<li>Item 3c</li>
+</ul></li>
+<li>Item 4</li>
+</ul>
+<p> </p>
+</div>
+<div id="tasks-list" class="section level4">
+<h4>Tasks list</h4>
+<p>Tasks list can be done using the following syntax:</p>
+<pre><code>- [ ] an unchecked task list item
+- [x] checked item</code></pre>
+<p>This will be rendered as:</p>
+<ul>
+<li><input type="checkbox" disabled="" />
+an unchecked task list item</li>
+<li><input type="checkbox" disabled="" checked="" />
+checked item</li>
+</ul>
+<p><br />
+</p>
+</div>
+</div>
+<div id="inserting-images" class="section level3">
+<h3>Inserting images</h3>
+<p>To insert an image use the following syntax: <code>![Figure caption](path to image)</code>. Example:</p>
+<p><code>![R Logo](img/Rlogo.png)</code></p>
+<p>Will be rendered as:</p>
+<div class="figure">
+<img src="img/Rlogo.png" alt="R Logo" />
+<p class="caption">R Logo</p>
+</div>
+<p><br />
+</p>
+</div>
+<div id="tables" class="section level3">
+<h3>Tables</h3>
+<p>Use <code>|</code>and <code>-</code> to create a table as follows:</p>
+<pre><code>| Column 1    | Column 2    |
+| ----------- | ----------- |
+| Item 1,1    | Item 1,2    |
+| Item 2,1    | Item 2,2    |</code></pre>
+<p>This is rendered as:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Column 1</th>
+<th>Column 2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Item 1,1</td>
+<td>Item 1,2</td>
+</tr>
+<tr class="even">
+<td>Item 2,1</td>
+<td>Item 2,2</td>
+</tr>
+</tbody>
+</table>
+<p>Table alignments can be done using the following syntax:</p>
+<pre><code>| Left align  | Center align | Right align  |
+| :---        |    :----:    |         ---: |
+| Item 1,1    | Item 1,2     | Item 1,3     | 
+| Item 2,1    | Item 2,2     | Item 2,3     |</code></pre>
+<p>This is rendered as:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Left align</th>
+<th align="center">Center align</th>
+<th align="right">Right align</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Item 1,1</td>
+<td align="center">Item 1,2</td>
+<td align="right">Item 1,3</td>
+</tr>
+<tr class="even">
+<td align="left">Item 2,1</td>
+<td align="center">Item 2,2</td>
+<td align="right">Item 2,3</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+</p>
+</div>
+<div id="blocks" class="section level3">
+<h3>Blocks</h3>
+<p>Blocks in the notebook can be created by using the <code>&gt;</code> sign as follows: <code>&gt; Example of a block</code></p>
+<p>This is rendered as:</p>
+<blockquote>
+<p>Example of a block</p>
+</blockquote>
+<p>If you would like to add <strong>code blocks</strong>, use <code>```</code> before and after the code as follows:</p>
+<pre><code>```
+print(&quot;Hello world&quot;)
+x &lt;- 1+2
+print(x)
+```</code></pre>
+<p>This will be rendered as:</p>
+<pre><code>print(&quot;Hello world&quot;)
+x &lt;- 1+2
+print(x)</code></pre>
+<p><br />
+</p>
+</div>
+<div id="adding-a-table-of-contents" class="section level3">
+<h3>Adding a table of contents</h3>
+<p>To add a table of contents to your report add the following to the YAML header:</p>
+<pre><code>output:
+  html_document:
+    toc: true</code></pre>
+<p>By default all headings up to level 3 headings are displayed in the table of contents. You can adjust this by specifying <code>toc_depth</code> as following:</p>
+<pre><code>output:
+  html_document:
+    toc: true
+    toc_depth: 4</code></pre>
+<p><br />
+</p>
+</div>
+<div id="adding-references" class="section level3">
+<h3>Adding references</h3>
+<p>Adding references and citations in Markdown is not as easy as reference manager software such as Mendeley. To be able to create citations you will need to create a bibliography file with all the references in it. Here is an <a href="references.bib">example of a bibliography file</a>. The bibligraphy file has to be placed in the same folder as the one where the <code>.Rmd</code> file is. Next, add the following to the YAML header:</p>
+<pre><code>bibliography: references.bib
+link-citations: yes</code></pre>
+<p>Your YAML header should now look like:</p>
+<pre><code>---
+title: &quot;My first notebook&quot;
+author:  Alexia Cardona
+date: 18 February 2020
+bibliography: references.bib
+link-citations: yes
+---</code></pre>
+<p>To cite a reference use the <code>@</code> together with the ID of the reference. Example:</p>
+<p><code>Citation to my paper @cardona2014 and @cardona2019</code></p>
+<p>Will be rendered as:</p>
+<p>Citation to my paper <span class="citation">Cardona (<a href="#ref-cardona2014">2014</a>)</span> and <span class="citation">Cardona et al. (<a href="#ref-cardona2019">2019</a>)</span></p>
+<p>To add the bibliography at the end of the report add a References heading at the end of the report:</p>
+<p><code># References</code></p>
+<p>See <a href="#refs">references</a> at the end of the report.</p>
+<p>See <a href="https://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html" class="uri">https://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html</a> for more information.</p>
+<p><br />
+</p>
+</div>
+</div>
+<div id="r-code-chunks" class="section level2">
+<h2>R code chunks</h2>
+<p>So far we have not used any R code and all the code we used so far is in Markdown. As the name suggests, Rmarkdown files contain markdown and R. Rmarkdown files have a <code>.Rmd</code> extention. Using R in a markdown document makes sense if we integrate our analysis in our report. Some operations that we might need to do are; loading our dataset, performing some operations on the dataset and displaying results, either in a table or in a plot. We will be doing all this in the following sections.</p>
+<p>If you would like to insert R code inside the notebook you will have to insert it inside an R code chunk to be able to execute it. To do this either click on the <code>Insert</code> button at the top of the Source panel in RStudio:</p>
+<p><img src="img/insert-r-chunk.png" width=150/></p>
+<p>This creates an <strong>R code chunk</strong> as follows: <img src="img/r-chunk.png" /></p>
+<p>Alternatively, you can type the r code chunk. The R code should be placed in between the triple backticks. Note that on the right hand side of the R code chunk there is a green “play” button that will run the R code chunk if pressed. By default, when the Rmarkdown document is knitted, the R code will be executed and the R code chunk is displayed before the executed code.</p>
+<p><a href="RNotebookExample.Rmd">Click here</a> for an example of an R Notebook. The sections below will go over the differet parts of the R Notebook. Add RNotebookExample.Rmd to your existing R project.</p>
+<p> </p>
+<div id="the-dataset" class="section level3">
+<h3>The dataset</h3>
+<p><a href="RNotebookExample.Rmd">RNotebookExample.Rmd</a> uses data from <a href="https://www.gapminder.org/">gapminder</a>. Let us download the <code>gapminder_data.csv</code> dataset into our project. Create a <code>data</code> folder in your working directory. Download the dataset into the <code>data</code> folder as follows:</p>
+<pre><code>download.file(url=&quot;https://raw.githubusercontent.com/cambiotraining/reproducibility-training/master/data/gapminder_data.csv&quot;, destfile=&quot;data/gapminder_data.csv&quot;)</code></pre>
+<p>The <code>gapminder_data.csv</code> dataset that is loaded into the notebook contains the life expectancy and GDP per capita data for each country per year from 1952 to 2007. The dataset has the following columns:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Column</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>country</td>
+<td>Country</td>
+</tr>
+<tr class="even">
+<td>year</td>
+<td>Year the life expectency and GDP per capita index applies</td>
+</tr>
+<tr class="odd">
+<td>pop</td>
+<td>Population size</td>
+</tr>
+<tr class="even">
+<td>continent</td>
+<td>Continent</td>
+</tr>
+<tr class="odd">
+<td>lifeExp</td>
+<td>Life expectancy</td>
+</tr>
+<tr class="even">
+<td>gdpPercap</td>
+<td>GDP per capita index</td>
+</tr>
+</tbody>
+</table>
+<p>The dataset contains data for different countries in the world. For our analysis we would like to look at only the European countries in the dataset. This means that we would need to manipulate the dataset before we can display the results.</p>
+<p> </p>
+</div>
+<div id="chunk-options" class="section level3">
+<h3>Chunk options</h3>
+<p>As mentioned, by default the chunk output will be displayed exactly after the R code chunk and the R code chunk is also displayed in the rendered page. If you would like to have different settings, you can specify these as arguments in the <code>{}</code> part of the R code chunk.</p>
+<p>These chunk options include:</p>
+<ul>
+<li><code>include = FALSE</code> do not display the code and results in the page after it is knitted. The R code however still runs and therefore the variables or results in this code chunk can be used by the other chunks.<br />
+</li>
+<li><code>echo = FALSE</code> does not display the code, but it displays the results in the rendered file.<br />
+</li>
+<li><code>message = FALSE</code> does not display any messages that are generated by the code chunk in the rendered file.</li>
+<li><code>warning = FALSE</code> does not display warnings that are generated by code chunk in the rendered file.</li>
+</ul>
+<p>A full list of options that can be used in the R code chunks is found <a href="https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf">here</a>.</p>
+<p><br />
+</p>
+</div>
+<div id="tables-in-rmarkdown" class="section level3">
+<h3>Tables in Rmarkdown</h3>
+<p>When you have a large dataset, creating a table manually in rmarkdown as we did <a href="#tables">here</a> is not really feasible. Also if you are really trying to make your research reproducible, then, you will need to generate most of the tables dynamically and therefore you will not be able to manually type them in markdown. This is where Rmarkdown comes in as there is a way to display tables dynamically. In <a href="RNotebookExample.Rmd">RNotebookExample.Rmd</a>, the data was first loaded and then after some manipulation, the table was displayed by using the <code>kable</code> function and passing in the table variable as its argument. More information about <code>kable</code> can be found in its <a href="https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html">documentation</a>.</p>
+<p>If you have a very long table to display, the best way would be to use pagination where the contents of the table are split into multiple tabs. The function <code>paged_table</code> in the <code>rmarkdown</code> library can be used to do this (see example in <a href="RNotebookExample.Rmd">RNotebookExample.Rmd</a>).</p>
+<p> </p>
+</div>
+</div>
+</div>
+<div id="summary" class="section level1">
+<h1>Summary</h1>
+<p>Through R notebooks we can now integrate our R code and our results in one readable document that we can share with our collaborators. In this way the code and the results have become one item. For inspiration, examples of R notebooks can be found at <a href="https://rpubs.com/" class="uri">https://rpubs.com/</a></p>
+<p><strong>Limitations:</strong></p>
+<p>Some limitations that Rmarkdown has:</p>
+<ul>
+<li>Figure and table numbering is not supported. There is still a way around this, by using third-party packages <em>e.g.,</em> <a href="https://cran.r-project.org/web/packages/captioner/vignettes/using_captioner.html">captioner</a>.</li>
+<li>If you are looking at specific customisations that are different from the default Markdown format, <em>e.g.,</em> headings using different font specifications, then this gets tricky and markdown might not be the best approach.</li>
+</ul>
+<p><br />
+</p>
+</div>
+<div id="refs" class="section level1 unnumbered">
+<h1>References</h1>
+<div id="refs" class="references">
+<div id="ref-cardona2019">
+<p>Cardona, Alexia, Felix R. Day, John R.B. Perry, Marie Loh, Audrey Y. Chu, Benjamin Lehne, Dirk S. Paul, et al. 2019. “Epigenome-Wide Association Study of Incident Type 2 Diabetes in a British Population: EPIC-Norfolk Study.” <em>Diabetes</em>. <a href="https://doi.org/10.2337/db18-0290">https://doi.org/10.2337/db18-0290</a>.</p>
+</div>
+<div id="ref-cardona2014">
+<p>Cardona, Luca AND Antao, Alexia AND Pagani. 2014. “Genome-Wide Analysis of Cold Adaptation in Indigenous Siberian Populations.” <em>PLOS ONE</em> 9 (5): 1–11. <a href="https://doi.org/10.1371/journal.pone.0098076">https://doi.org/10.1371/journal.pone.0098076</a>.</p>
+</div>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>This is the first footnote.<a href="#fnref1" class="footnote-back">↩</a></p></li>
+<li id="fn2"><p>This is the second footnote.<a href="#fnref2" class="footnote-back">↩</a></p></li>
+</ol>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3,h4,h5,h6",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

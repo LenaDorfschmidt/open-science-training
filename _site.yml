@@ -1,0 +1,11 @@
+name: "reproducibility-training"
+output_dir: "."
+navbar:
+  title: "Reproducible research in R"
+  left:
+    - text: "Rmarkdown"
+      href: rmarkdown.html
+    - text: "Git"
+      href: git.html
+output:
+  html_document
