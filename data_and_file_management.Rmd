@@ -24,17 +24,22 @@ htmltools::tagList(rmarkdown::html_dependency_font_awesome())
 </font> 
 ::::
 
-1. We will first do **first thing**
-2. And then do the **second thing** 
+1. You will learn how to set up a file organization that allows for users (including your future self) to easily understand the structure of your project.
+2. You will learn how to name your files to support easy access to your project. 
 ::::
 
 <br /><br />
 
 # File Naming
 
+<br /><br />
+<br /><br />
+
 
 # Data Management
 
+<br /><br />
+<br /><br />
 
 :::: {.taskbox data-latex=""}
 :::: {.taskbox-title }
@@ -43,10 +48,11 @@ htmltools::tagList(rmarkdown::html_dependency_font_awesome())
 </font>
 ::::
 
-1. This is the **first thing** you should have learned.
-2. This is the **second thing** you should have learned.
+1. Choose a file naming system and organization - any system - to make your project more accessible.
+2. Setting up a system may take some effort, but future users (including your future self) will thank you for it.
 ::::
 
+<br /><br />
 
 # Further Resources
 

@@ -70,11 +70,11 @@ Done? Perfect, let's move on.
 
 ## Introduce yourself to git
 
-We now need to tell git who you are. In the shell type: `git config --list --show-origin`. Git will tell you know what it already knows about you. If the `user.name` and `user.email` already show your git username and the email address you used to setup your account, you are done and can move one. If not, in the shell, enter the following. Substitue `YourUsername` and `you@emailaddress.com` with the information used for setting up your git account. 
+We now need to tell git who you are. In the shell type: `git config --list --show-origin`. Git will tell you know what it already knows about you. If the `user.name` and `user.email` already show your git username and the email address you used to setup your account, you are done and can move one. If not, in the shell, enter the following. Substitue `YourUsername` and `your@emailaddress.com` with the information used for setting up your git account. 
 
 ````markdown
 git config --global user.name 'YourUsername'
-git config --global user.email 'you@emailaddress.com'
+git config --global user.email 'your@emailaddress.com'
 ````
 
 Use `git config --list --show-origin` again to check this worked out. 
@@ -147,6 +147,36 @@ install.packages('usethis')
 
 To make your life easier and prevent having to enter your password and user name every time you commit to git, we will create a personal access token. 
 
+```{r eval=FALSE, include=TRUE}
+usethis::create_github_token(
+  scopes = c("repo", "gist", "YourUsername:your@emailaddress.com"),
+  description = "A_meaningful_name",
+  host = "https://github.com"
+)
+```
+
+
+This should open a browser window (probably you will have to confirm your GitHub password first) that allows you to choose what you can/cannot do with the new token. For now, we will create a token as below, but you can always create a new token later. 
+
+
+![](img/Token_setup.png){width=80%}
+
+This will provide you with a new token to copy on your clipboard. Note: for security reasons, after you leave the page, you will not be able to see the token again. 
+
+![](img/Token_clipboard.png){width=60%}
+<br/>
+
+
+Store the personal access token. Select 'Replace these credentials' (option 2) and paste the token when asked.
+
+```{r eval=FALSE, include=TRUE}
+gitcreds::gitcreds_set()
+
+```
+![](img/set_token.png){width=60%}
+
+<br/>
+<br/>
 <br />
 
 ## Clone the repository 
@@ -272,6 +302,64 @@ Congratulations, you have just made your first commit!
 
 <br />
 
+
+# Useful tips and tricks
+
+Now that we have learned how to use the basic features of version control using git in R Studio, let's look at some tips an tricks that may come in handy. 
+
+## Creating a new repository...
+
+Above, we created a git repository on GitHub, then cloned it to use it R Studio. That's an easy way to get you started, but not necessarily the most intuitive workflow. Here are two different ways of how you could create a new repository:
+
+### ...from an existing R project
+
+If you have the usethis package, call `usethis::use_git()`.
+
+![](img/use_this.png){width=60%}
+<br/><br/>
+
+Alternatively, in RStudio, go to 'Tools > Project Options … > Git/SVN'. Under 'Version control system', select 'Git'. Confirm New Git Repository? Yes!
+
+![](img/repo_within_rstudio.png){width=60%}
+
+### ...from a new R project
+
+
+
+<br/>
+
+## Exploring commit history and file history
+
+One of the advantages of version control, is that it allows to trace back your mistakes. For example, imagine that you ended up hating your last edits to the README.md file. With version control you can effortlessly retrieve the pre-edit version of your file.
+
+
+ 1. Click on the 'History' icon:
+ ![](img/History_icon.png){width=80%}
+
+<br/>
+
+
+A new window will appear with a list of the changes committed in the past
+ ![](img/whole_history.png){width=80%}
+
+<br/>
+
+Choose the pre-edited version (Red arrow. Note:the bottom panel shows the changes happened in that given commit)
+
+<br/>
+
+
+Click on 'view file' (Black arrow)
+
+<br/>
+
+
+The pre-edited file will show up and can be saved in your local directory.
+![](img/oldfile.png){width=80%}
+
+
+<br />
+
 :::: {.taskbox data-latex=""}
 :::: {.taskbox-title }
 <font size="5"> 
@@ -282,6 +370,12 @@ Congratulations, you have just made your first commit!
 1. git/GitHub is a powerful distributed version control system that allows you to track the history of changes to your work. Version control is like an unlimited ‘undo’.
 2. R Studio allows you to directly interact with git. How convenient!
 ::::
+
+<br /><br />
+
+
+
+
 
 # Further Resources
 ***

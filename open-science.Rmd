@@ -24,8 +24,8 @@ htmltools::tagList(rmarkdown::html_dependency_font_awesome())
 </font> 
 ::::
 
-1. You will gain an understanding of 
-2. You will  
+1. You will gain an understanding of how open science techniques support researchers (you!) in doing better science. 
+2. You will learn to appreciate factors that contribute to the lack of reproducibility in science. 
 ::::
 
 <br /> <br />
