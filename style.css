@@ -1,0 +1,41 @@
+.summarybox {
+  background-color: rgba(31, 184, 214, 0.4);
+  padding: 1em;
+  color: black;
+  border: 2px solid rgba(31, 184, 214, 1);
+  border-radius: 10px;
+}
+
+.taskbox {
+  background-color: rgba(249, 229, 52, 0.2);
+  padding: 1em;
+  color: black;
+  border: 2px solid rgba(249, 229, 52, 1);
+  border-radius: 10px;
+}
+
+
+.summarybox-title {
+  color: rgba(31, 184, 214, 1);
+}
+
+.taskbox-title {
+  color: rgba(249, 229, 52, 1);
+}
+
+.center {
+  text-align: center;
+}
+
+.column-right{
+  float: left;
+  width: 80%;
+  text-align: left;
+}
+.column-left{
+  display: inline-block;
+  width: 20%;
+  text-align: center;
+}
+
+

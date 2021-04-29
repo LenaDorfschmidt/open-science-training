@@ -1,0 +1,54 @@
+---
+output:
+  html_document: 
+    toc: true
+    toc_float: true
+    toc_depth: 6
+---
+```{r setup, include=FALSE}
+htmltools::tagList(rmarkdown::html_dependency_font_awesome())
+```
+
+<br /> <br />
+
+<p align="center">
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRywsJNcOVxdy6FKxwIu7iG9C9Ts1suT2uTqw8MyBFCHiv8mGZOvIDhx0PIAsii6F5MkWtgYopKbnnc/embed?start=false&loop=false&delayms=3000" frameborder="0" width="672" height="398" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+</p>
+
+<br /><br />
+
+:::: {.summarybox data-latex=""}
+:::: {.summarybox-title }
+<font size="5"> 
+<i class="fas fa-question-circle"></i> **Overview**
+</font> 
+::::
+
+1. We will first do **first thing**
+2. And then do the **second thing** 
+::::
+
+<br /><br />
+
+# File Naming
+
+
+# Data Management
+
+
+:::: {.taskbox data-latex=""}
+:::: {.taskbox-title }
+<font size="5"> 
+<i class="fas fa-exclamation-circle"></i> **Summary**
+</font>
+::::
+
+1. This is the **first thing** you should have learned.
+2. This is the **second thing** you should have learned.
+::::
+
+
+# Further Resources
+
+
+

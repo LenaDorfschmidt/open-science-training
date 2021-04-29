@@ -1,0 +1,59 @@
+---
+output:
+  html_document: 
+    toc: true
+    toc_float: true
+    toc_depth: 6
+---
+```{r setup, include=FALSE}
+htmltools::tagList(rmarkdown::html_dependency_font_awesome())
+```
+
+<br /><br />
+
+<p align="center">
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vSXuQY8N0OGs3G-iQcEJZNOJrYeJoDzz9E7qyJUzGJBt3MP4SfFtN8fXwAcDuWH8CUqxCnoHU3sbsax/embed?start=false&loop=false&delayms=3000" frameborder="0" width="672" height="398" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+</p>
+
+<br /><br />
+
+:::: {.summarybox data-latex=""}
+:::: {.summarybox-title }
+<font size="5"> 
+<i class="fas fa-question-circle"></i> **Overview**
+</font> 
+::::
+
+1. You will gain an understanding of 
+2. You will  
+::::
+
+<br /> <br />
+
+
+:::: {.taskbox data-latex=""}
+:::: {.taskbox-title }
+<font size="5"> 
+<i class="fas fa-exclamation-circle"></i> **Summary**
+</font>
+::::
+
+1. Working openly and reproducibly benefits **you**. 
+
+::::
+
+
+<br /><br />
+
+# Further Resources
+
+Check out The Turing Way [Youtube Channel](https://www.youtube.com/channel/UCPDxZv5BMzAw0mPobCbMNuA).
+
+Have a look at the [UK Reproducibility Network's](https://www.ukrn.org) activities.
+
+Watch [Florian Markowetz's talk](https://www.youtube.com/watch?v=Is15CMVPHas&feature=youtu.be) on '5 selfish reasons to work reproducibly' at SciData 2016.
+
+Baker, M. (2016). 1,500 scientists lift the lid on reproducibility. Nature, 533(7604), 452–454. https://doi.org/10.1038/533452a
+
+The Turing Way Community, Becky Arnold, Louise Bowler, Sarah Gibson, Patricia Herterich, Rosie Higman, … Kirstie Whitaker. (2019, March 25). The Turing Way: A Handbook for Reproducible Data Science (Version v0.0.4). Zenodo. http://doi.org/10.5281/zenodo.3233986
+

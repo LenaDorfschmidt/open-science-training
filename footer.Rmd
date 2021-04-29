@@ -1,0 +1,21 @@
+---
+output: html_document
+---
+
+```{r setup, include=FALSE}
+htmltools::tagList(rmarkdown::html_dependency_font_awesome())
+```
+
+&nbsp;
+<hr />
+<p style="text-align: center;">Created by <a href="https://www.neuroscience.cam.ac.uk/directory/profile.php?ld548">Lena Dorfschmidt</a></p>
+
+
+<!-- Add font awesome icons -->
+<p style="text-align: center;">
+    <a href="https://twitter.com/lenadorfschmidt" class="fab fa-twitter"></a>
+    <a href="https://github.com/LenaDorfschmidt" class="fab fa-github"></a>
+    <a href="mailto:ld548@cam.ac.uk" class="fas fa-envelope"></a>
+</p>
+
+&nbsp;

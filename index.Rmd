@@ -1,35 +1,107 @@
 ---
-title: "Reproducible Research in R"
-author:  Alexia Cardona
+title: "Reproducible Research (in R)"
+author:  Lena Dorfschmidt
+output:
+  html_document: 
+    toc: true
+    toc_float: true
+    toc_depth: 6
 ---
+```{r setup, include=FALSE}
+htmltools::tagList(rmarkdown::html_dependency_font_awesome())
+```
+***
+<i class="fas fa-video"></i> &nbsp; [Zoom Link](www.thiswillbethezoomlink.co.uk) for lectures. 
 
-<br/>
-18 February 2020 
+<i class="fab fa-slack"></i> &nbsp; [Slack Channel](www.thiswillbethezoomlink.co.uk) for communication during practicals.
 
-Bioinformatics Training Facility
+<i class="fas fa-chalkboard-teacher"></i> &nbsp; [Instructor](mailto:ld548@cam.ac.uk) Lena Dorfschmidt, *Brain Mapping Unit, Department of Psychiatry*
 
-**Instructor:** Alexia Cardona, Paul Judge, Martin van Rongen
+***
 
-<br/>
+# Course Description
 
-### Description
+This course introduces the aims and basic principles of reproducible research. It consists of three session, each of which is split into a lecture-style part and practical work. 
 
-This course introduces concepts about reproducibility that can be used when you are programming in R. We will explore how to create notebooks - a way to integrate your R analyses into reports using Rmarkdown. The course also introduces the concept of version control. We will learn how to create a repository on GitHub and how to work together on the same project collaboratively without creating conflicting versions of files.
-
-\  
-
-### Prerequisites
-
-The [Introduction to R for Biologists](https://training.csx.cam.ac.uk/bioinformatics/course/bioinfo-introRbio) course and/or have a working knowledge of R.
-
-\  
-
-### Sessions
-
-1. [Rmarkdown/ R notebooks](rmarkdown.html)
-2. [GitHub](git.html)
+Lectures are delivered via Zoom and communication during practicals and in between sessions will happen on Slack.  
 
 
+
+:::: {.summarybox data-latex=""}
+:::: {.summarybox-title }
+<font size="5"> 
+<i class="fas fa-question-circle"></i> **Sessions**
+</font> 
+::::
+
+1. You will learn how to create a folder structure and file naming system that is simple and easy to understand without the author's explanation in [Data and File Management](data_and_file_management.html).
+2. You will create [R Markdown](rmarkdown.html) files to analyze your data and document your result in a single, easily sharable document. 
+3. You will learn how to use [Version Control](git.html) control in order to handle changes to files in a structured and well-document way. 
+
+::::
+
+<br /><br />
+
+
+# Course Preparation
+***
+
+## Install R Studio
+
+<div class="column-left">
+<a title="RStudio, Inc., Public domain, via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:RStudio_logo_flat.svg"><img width="150" alt="RStudio logo flat" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/RStudio_logo_flat.svg/512px-RStudio_logo_flat.svg.png"></a>
+</div>
+
+<div class="column-right">
+1. Install [R Version 3.0.1 or higher](https://cran.rstudio.com). 
+2. Download and install [R Studio](https://www.rstudio.com/products/rstudio/download/#download) 
+</div>
+
+
+<br /><br />
+
+## Create a Github account
+
+<div class="column-left">
+<a title="GitHub, Public domain, via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:Github-desktop-logo-symbol.svg"><img width="100" alt="Github-desktop-logo-symbol" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Github-desktop-logo-symbol.svg/128px-Github-desktop-logo-symbol.svg.png"></a>
+</div>
+
+
+<div class="column-right">
+1.  Install [Git](http://git-scm.com/downloads). You can find the instructions to install Git [here](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
+2. Create a [GitHub account](https://github.com) if you don’t already have one. 
+
+For your username...
+
+* consider using lower-case letters, making it as short as you can.
+* incorporate your actual name, it makes your username easier for people to remember.
+* consider re-using your username from other contexts e.g. Twitter.
+
+Further, you may want to use your “.ac.uk” email for your account, since this allows you to request free private repositories via GitHub Education.
+</div>
+
+## Install Git
+
+First, let's figure out if you already have git installed. Go to the shell and enter `which git` to request the path to your Git executable:
+
+```
+which git
+## /usr/bin/git
+```
+If this is successfull: great! Move on to the next section. If not, then you should install git. 
+
+## Mac
+If you have homebrew installed, you can type `brew install git` in the command line. Should you not have homebrew installed, you can also install git from here: http://git-scm.com/downloads
+
+## Windows
+
+For windows users, I'd recommend you install [Git for Windows](https://gitforwindows.org). Use the default settings except for when asked about 'When asked about 'Adjusting your PATH environment': Here, select ', make sure to select 'Git from the command line and also from 3rd-party software'.
+
+## Linux
+
+On Linux, you can install git by typing `sudo apt-get install git`. 
+
+<br /><br /><br /><br />
 
 
 

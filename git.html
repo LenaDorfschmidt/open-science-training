@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
 
 
-<title>git.utf8.md</title>
+<title>git.utf8</title>
 
+<script src="site_libs/header-attrs-2.5/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
@@ -26,6 +26,19 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="site_libs/anchor-sections-1.0/anchor-sections.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -72,6 +85,7 @@ h6 {
 }
 </style>
 
+<link rel="stylesheet" href="style.css" type="text/css" />
 
 
 
@@ -235,6 +249,7 @@ $(document).ready(function () {
   border: none;
   display: inline-block;
   border-radius: 4px;
+  background-color: transparent;
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li {
@@ -263,6 +278,12 @@ $(document).ready(function () {
 }
 }
 
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
 
 .toc-content {
   padding-left: 30px;
@@ -337,15 +358,21 @@ div.tocify {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">Reproducible research in R</a>
+      <a class="navbar-brand" href="index.html">Reproducible Research (in R)</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="rmarkdown.html">Rmarkdown</a>
+  <a href="open-science.html">Open Science</a>
 </li>
 <li>
-  <a href="git.html">GitHub</a>
+  <a href="data_and_file_management.html">Data and File Management</a>
+</li>
+<li>
+  <a href="rmarkdown.html">R Markdown</a>
+</li>
+<li>
+  <a href="git.html">Version Control</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -363,130 +390,204 @@ div.tocify {
 </div>
 
 
-<div id="version-control-systems" class="section level1">
-<h1>Version Control Systems</h1>
-<p>A version control system is a system which keeps track of the history/changes/versions of a file making it easier for multiple people to work on the same project at the same time. This gives them the possibility of comparing changes between different versions of the file, move back to an previous version of a file if needed, keep track on who,when and why someone in the team made changes to a file. <!--animation of versioning --> <!--http://swcarpentry.github.io/git-novice/01-basics/index.html--></p>
-<p>This system is popular in the software development industry as it allows teams to have a common location or <strong>repository</strong> where all the source code/files in the project are kept and thus are able to work on an updated version of the project.</p>
-<p>Version control systems are also popular as they prevent the situation of loosing all your work if your computer breaks down. Most probably you have already been using a kind of version control without realising by renaming your files.</p>
-<p><img src="img/phdcomic.png" /> <!--http://phdcomics.com/comics.php?f=1531--></p>
-<p>A version control system will be keeping versions for each file in the repository behind the scenes, so you do not need to worry about renaming files, etc…</p>
-<p>Version control systems are often categorised as either <strong>centralised</strong> version control systems or <strong>distributed</strong> version control systems.</p>
-<p> </p>
-<div id="centralised-version-control-systems" class="section level2">
-<h2>Centralised Version Control Systems</h2>
-<p>A centralised version control system has only one copy of the project held in a central place (server) which also keeps track of the files’ history (versions). The people working on the project would be able to <strong>commit</strong> or make changes to the central server. Normally multiple people are not able to work on the same file simultaneously. <!-- They normally also have the file locking feature so that if multiple users are trying to modify the same file they are warned --> Examples of centralised version control systems are CVS and Subversion (SVN). Distributed version control systems are becoming increasingly more popular as they overcome some of the limitations imposed by centralised version control systems.</p>
-<div class="figure">
-<img src="img/centralised-vcs.png" alt="Image from https://homes.cs.washington.edu/~mernst/advice/version-control.html" />
-<p class="caption">Image from <a href="https://homes.cs.washington.edu/~mernst/advice/version-control.html" class="uri">https://homes.cs.washington.edu/~mernst/advice/version-control.html</a></p>
-</div>
-<p> </p>
-</div>
-<div id="distributed-version-control-systems" class="section level2">
-<h2>Distributed Version Control Systems</h2>
-<p>In a distributed version control system each person in a team working on the project makes a copy or <strong>clones</strong> the repository on their own computer which also includes the full history of the different files inside the repository. Thus if a server dies, it would be able to be restored back from the copies of the repositories held by the different people in the team.</p>
-<p>In this course we will be learning about <strong>git</strong> which is an example of a distributed version control system.<br />
-<img src="img/distributed-vcs.png" alt="Image from https://homes.cs.washington.edu/~mernst/advice/version-control.html" /></p>
-<p> </p>
-</div>
-</div>
-<div id="what-is-github" class="section level1">
-<h1>What is Github?</h1>
-<p>It is important to distinguish between git and GitHub. git is the version control system - the tool needed to keep track of your files/repositories history. On the other hand, GitHub is a hosting platform where you can keep your files/repositories in.</p>
-<p>The best way to understand this clearly is by seeing this in action and working through an example together. There are several ways you can keep versions of your files through git and GitHub and we will be looking at two popular ways in this course; using the GitHub website and using Rstudio.</p>
-<p> </p>
-</div>
-<div id="version-control-through-the-github-website" class="section level1">
-<h1>Version Control through the GitHub website</h1>
-<p>In this section we will use GitHub and manage our project online without using any coding.</p>
-<p>The first step is to create a repository. The slides below provide step by step instructions on how to do this.</p>
-<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQ0VHWripOuP0wNye8q-HpIHfLGAQSi_QTlrcEAIET8kSx8g3XDY83201-OVg4muCdZIr4-CcQ21iFr/embed?start=false&amp;loop=false&amp;delayms=3000" frameborder="0" width="820" height="480" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true">
+<p><br /> <br /></p>
+<p align="center">
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQpzxV_-Jmz4tIhPA3BsO7p_mxDVMqkODyJYPos1cghlkUX8nY_Z7YTV7NFzcKI1gKt8bEQGySRnDaA/embed?start=false&amp;loop=false&amp;delayms=3000" frameborder="0" width="672" height="398" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true">
 </iframe>
-<p>After this example we have now a repository in place where anyone can see the files.</p>
-<p> </p>
-</div>
-<div id="project-management-in-github" class="section level1">
-<h1>Project management in GitHub</h1>
-<p>GitHub integrates project management features to help its users manage their repositories. This is especially helpful if these involve the collaboration of more than one person. As the name suggests, project management allows the initiating, planning, executing, controlling, and closing the work of a team to achieve specific goals at the specified time [<a href="https://en.wikipedia.org/wiki/Project_management">Wikipedia</a>]. More information on Project Management on GitHub can be found at:</p>
-<ul>
-<li><a href="https://github.com/features/project-management">https://github.com/features/project-management</a></li>
-<li><a href="https://help.github.com/en/github/managing-your-work-on-github">https://help.github.com/en/github/managing-your-work-on-github</a></li>
-</ul>
-<p><br />
 </p>
-<div id="adding-collaborators" class="section level2">
-<h2>Adding Collaborators</h2>
-<p>If you are working on a project in a team or with collaborators than it would be more useful to either add collaborators to your repository or else create an organisation and add members to your organisation. Creating an organisation in GitHub is useful if you want to manage access to the different team individuals and when you have more than one repository. More information about how to setup an Organisation on GitHub can be found <a href="https://help.github.com/en/github/setting-up-and-managing-organizations-and-teams">here</a>. In this course we will be looking at how to add collaborators to your repository.</p>
-<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vR_Hmo4XUWHTIgVAY7clbFIPRvO-FVLfJMxBT4D5JjgiT34RhteOBP_qn9Vp8oXRPQtObnqbqmKG-ek/embed?start=false&amp;loop=false&amp;delayms=3000" frameborder="0" width="820" height="480" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true">
-</iframe>
-<p><br />
-</p>
+<p><br /> <br /></p>
+<div class="summarybox">
+<div class="summarybox-title">
+<p><font size="5"> <i class="fas fa-question-circle"></i> <strong>Overview</strong> </font></p>
 </div>
-<div id="issues" class="section level2">
-<h2>Issues</h2>
-<p>In GitHub, Issues are created to suggest an idea, improvements or keep track of bugs, in other words, it can be viewed as a task list for the project. The steps involved to create an Issue on GitHub are:</p>
-<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRAAAzpAWQTFhcSxq4Vtz0Z_XrXam5ZykWXA56BaucHwCjrJeESPyv37yjhD1SGDR1gcw9ac7rA2SUi/embed?start=false&amp;loop=false&amp;delayms=3000" frameborder="0" width="820" height="480" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true">
-</iframe>
-<p><br />
-</p>
-</div>
-<div id="project-board" class="section level2">
-<h2>Project Board</h2>
-<p>GitHub provides project boards to help manage the issues and other tasks related to the project. GitHub allows the user to specify a project template for the project board (details of the different templates can be found <a href="https://help.github.com/en/github/managing-your-work-on-github/about-project-boards#templates-for-project-boards">here</a>). One of the most popular style of project management methodolody is <strong>Kanban</strong>. Kanban is an agile methodology where the testing and build phase are integrated in the same iteration as programming rather than having them as separate phases as done in traditional methodologies. In its simple form, the Kanban methodology is a kanban board composed of 3 columns:</p>
 <ol style="list-style-type: decimal">
-<li>To do</li>
-<li>In progress</li>
-<li>Done</li>
+<li>You will understand the benefits of an automated version control system.</li>
+<li>You will setup your <strong>first git repository</strong>.</li>
+<li>You will gain an understandig of how to use git to track <em>your own</em> changes to your project.</li>
 </ol>
-<p>The tasks in a project are represented by cards, with each card representing one task. The tasks start from the first column (To do) and they are pulled along the right (subsequent columns) as the task progresses through the workflow (known as a pull system). The Kanban method focuses on having a work in progress list as small as possible so that the workforce is focused on finishing tasks with high priority. It is also emphasises on representing the tasks visually on the kanban board, allowing team members to see the status of the project at any time. If you are interested to understand the Kanban methodology better there are a good set of short videos about this <a href="https://www.atlassian.com/agile/kanban">here</a>.</p>
-<p>Let us try to create a project board on GitHub together:</p>
-<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vS02IyjD_9w1NCk7RNmGsLKnAtlTrDNg-5q9cGrv3fuazMY7i3ZuU-A2GMn_qhXttQwea0YyrBUIEsV/embed?start=false&amp;loop=false&amp;delayms=3000" frameborder="0" width="820" height="420" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true">
-</iframe>
-<p>More information about project boards on GitHub can be found at <a href="https://help.github.com/en/github/managing-your-work-on-github/managing-project-boards">https://help.github.com/en/github/managing-your-work-on-github/managing-project-boards</a>.</p>
-<p><br />
-</p>
 </div>
-<div id="the-github-flow" class="section level2">
-<h2>The GitHub flow</h2>
-<!-- this needs updating with the status of the project board -->
-<!-- https://nvie.com/posts/a-successful-git-branching-model/ -->
-<p>Making changes to a repository that only yourself is contributing to is one thing. However, when working in teams especially one which involves a large number of people where everyone is making changes to the same repository you want to have a stable <strong>branch</strong> in place.</p>
-<p>A <strong>branch</strong> means a copy of your repository where you can make changes to without getting worried that you will do something wrong that will effect the remaining of the team. Therefore you are free to experiment on your own branch. There are several different workflows, <em>e.g.,</em> git-flow, GitHub flow and GitLab flow.</p>
-<p>It is not the scope of this course to get into details about the different software development versioning models. However, we will look briefly at GitHub flow which is one of the simple workflows available, with the aim to understand the basic constructs of software development versioning models so that we can adopt some good practices when sharing code or working in teams.</p>
-<!-- https://githubflow.github.io/ -->
-<!-- https://guides.github.com/introduction/flow/ -->
-<!-- https://flowcanon.com/software/choosing-the-best-git-branching-strategy-for-your-team/ -->
-<p>The GitHub flow steps consist of the following:</p>
+<p><br /> <br /></p>
+<div id="version-control" class="section level1">
+<h1>Version Control</h1>
+<hr />
+<p>Version control is a system that allows you to keep track of changes done to your files. Here, we will focus on how to use git/GitHub to track <em>your own</em> changes to your project, but distributed version control systems like gitHub can also be used to collaborate on projects. Check out this <a href="https://swcarpentry.github.io/git-novice/08-collab/index.html">resource</a> if you’d like to learn more about how to use git/GitHub for collaboration.</p>
+<p><br /><br /></p>
+</div>
+<div id="setup-git" class="section level1">
+<h1>Setup Git</h1>
+<hr />
+<div id="installation" class="section level2">
+<h2>Installation</h2>
+<p>First, let’s figure out if you already have git installed. Go to the shell and enter <code>which git</code> to request the path to your Git executable:</p>
+<pre class="markdown"><code>which git
+## /usr/bin/git</code></pre>
+<p>If this is successfull: great! Move on to the next section. If not, then you should install git.</p>
+<div id="mac" class="section level3">
+<h3>Mac</h3>
+<p>If you have homebrew installed, you can type <code>brew install git</code> in the command line. Should you not have homebrew installed, you can also install git from here: <a href="http://git-scm.com/downloads" class="uri">http://git-scm.com/downloads</a></p>
+</div>
+<div id="windows" class="section level3">
+<h3>Windows</h3>
+<p>For windows users, I’d recommend you install <a href="https://gitforwindows.org">Git for Windows</a>. Use the default settings except for when asked about ‘When asked about ’Adjusting your PATH environment’: Here, select ‘, make sure to select ’Git from the command line and also from 3rd-party software’.</p>
+</div>
+<div id="linux" class="section level3">
+<h3>Linux</h3>
+<p>On Linux, you can install git by typing <code>sudo apt-get install git</code>.</p>
+<p>Done? Perfect, let’s move on.</p>
+<p><br /><br /></p>
+</div>
+</div>
+<div id="introduce-yourself-to-git" class="section level2">
+<h2>Introduce yourself to git</h2>
+<p>We now need to tell git who you are. In the shell type: <code>git config --list --show-origin</code>. Git will tell you know what it already knows about you. If the <code>user.name</code> and <code>user.email</code> already show your git username and the email address you used to setup your account, you are done and can move one. If not, in the shell, enter the following. Substitue <code>YourUsername</code> and <code>you@emailaddress.com</code> with the information used for setting up your git account.</p>
+<pre class="markdown"><code>git config --global user.name &#39;YourUsername&#39;
+git config --global user.email &#39;you@emailaddress.com&#39;</code></pre>
+<p>Use <code>git config --list --show-origin</code> again to check this worked out.</p>
+<p><br /></p>
+</div>
+</div>
+<div id="creating-a-git-repository-on-github" class="section level1">
+<h1>Creating a git repository on GitHub</h1>
+<hr />
+<p>One easy way to create a git repository is to manually do so on GitHub. That’s how we will create our first repository. Go to <a href="https://github.com" class="uri">https://github.com</a> and log in.</p>
+<p>At the top left, click on ‘New’ to create a new repository.</p>
+<p><br /></p>
+<p><img src="img/git_create-repo.png" style="width:20.0%" /></p>
+<p><br /></p>
+<p>Now, choose a name and a short description for your new repository.</p>
+<p><br /></p>
+<p><img src="img/git_repo-name.png" style="width:40.0%" /></p>
+<p><br /></p>
+<p>You can choose whether you want your repository to be private or public. I personally tend to keep my repositories private until I get ready to publish my analyses.</p>
+<p><br /></p>
+<p><img src="img/git_repo-private.png" style="width:40.0%" /></p>
+<p><br /></p>
+<p>Lastly, we’ll click on ‘add README’ so we don’t have to create this later. README’s are a great way to describe what your repository is meant to do - you can add a lot of detail to this (check out a few repos on GitHub to see what people do), if you like, but at least give some basic indications on how things work.</p>
+<p><br /></p>
+<p><img src="img/git_repo-add-readme.png" style="width:40.0%" /></p>
+<p><br /></p>
+<p>Click on ‘Create Repository’ and you are done!</p>
+<p><br /></p>
+<p><img src="img/git_repo-setup.png" style="width:40.0%" /></p>
+<p><br /><br /></p>
+</div>
+<div id="setting-up-git-in-r-studio" class="section level1">
+<h1>Setting up git in R Studio</h1>
+<hr />
+<p>R Studio has a very useful feature which allows you to interact with your git repository from within R Studio, rather than having to revert to the shell or an external interface. Let’s setup that feature.</p>
+<p><br /></p>
+<div id="install-required-packages" class="section level2">
+<h2>Install required packages</h2>
+<p>Install <code>usethis</code>.</p>
+<pre class="markdown"><code>install.packages(&#39;usethis&#39;)</code></pre>
+<p><br /></p>
+</div>
+<div id="create-a-personal-access-token" class="section level2">
+<h2>Create a personal access token</h2>
+<p>To make your life easier and prevent having to enter your password and user name every time you commit to git, we will create a personal access token.</p>
+<p><br /></p>
+</div>
+<div id="clone-the-repository" class="section level2">
+<h2>Clone the repository</h2>
+<p>Until now, you repository only exists online on GitHub. We need to get it from there onto your local machine. This process is called ‘cloning’. To ‘clone’ means to make a local copy of a remote GitHub repository. This only needs to be done once.</p>
+<p><br /></p>
+<div id="copy-the-github-repositorys-url" class="section level3">
+<h3>Copy the GitHub repository’s URL</h3>
+<p>Got to the repository we just created on GitHub. Copy the URL. This should be <code>https://github.com/YourUsername/RepositoryName</code> where <code>YourUsername</code> is your GitHub username and <code>RepositoryRame</code> is the name you chose for your repository.</p>
+<p><br /></p>
+<p><img src="img/git_repo-url.png" style="width:40.0%" /></p>
+<p><br /></p>
+</div>
+<div id="create-a-new-project" class="section level3">
+<h3>Create a new project</h3>
+<p>Click on <code>File &gt; New Project &gt; Version Control &gt; Git</code>. A window will popup that allows you to specify where on GitHub R Studio should look for the repoistory.</p>
+<p>In the ‘Repository URL’ field paste the URL from your GitHub repository. Make sure that the Project directory name is the same as the GitHub repository (e.g above ‘myfirstrepository’). Make sure to choose the directory for you repository intentionally (and no, ‘Desktop’ and ‘Downloads’ are not acceptable options).</p>
+<p><br /></p>
+<p><img src="img/git_clone.png" style="width:40.0%" /></p>
+<p><br /></p>
+<p>Clicking on ‘Create Project’ will create a new directory on your computer which will include:</p>
 <ul>
-<li><p><strong>Anything in the <code>master</code> branch is deployable</strong>: The <code>master</code> branch is the main branch which reflects what is deployed. Therefore the master should always be in a ready state and stable.</p></li>
-<li><p><strong>Create a branch</strong>: If you want to make changes to the files present in the <code>master</code> branch create a new branch off of the <code>master</code> branch; we will refer to this as a <code>feature</code> branch. Name this <code>feature</code> branch with a descriptive name that reflects the change that you would like to do <em>e.g.</em> <code>fix-issue1</code>, <code>add-chapter1</code>. By creating a new <code>feature</code> branch off the <code>master</code> branch, you can safely do any changes you want without worrying of breaking the <code>master</code> branch. When you create a branch from your master branch, you’re creating a copy of of the master repository where you can add your new features or try out new ideas without effecting the master repository.</p></li>
-<li><p><strong>Make changes to the files and then commit to the <code>feature</code> branch</strong>. Adding commits to the <code>feature</code> branch is important as it keeps track of the updates that you do to your files and also the reason why they were made (make sure you write clear commit messages). The creation of a <code>feature</code> branch allows us to keep track of any changes that are done and compare the difference between the <code>master</code> and the <code>feature</code> branch. In this way you can have multiple people working on different things at the same time. As you have a stable <code>master</code> branch and all the other existant branches are fixes or updates that are work-in-progress to the project. Committing changes to the <code>feature</code> branch is also important as it helps you back up your work in case of a system failure or loss.</p></li>
-<li><p><strong>Open a pull request</strong>: Once you have tested the changes you have applied on your code to make sure that everything is running well and you are happy with the changes/commits done on the <code>feature</code> branch, the next step is to propose these changes to be submitted into the <code>master</code> branch for someone to review your work. This is done by creating a <strong>pull request</strong>. You can use the <code>@mention</code> system on GitHub to bring this to attention to specific people.</p></li>
-<li><p><strong>Discussion and review</strong>: The whole idea is that when you create a new pull request, this will enable a process of discussion and feeback about the changes being proposed back and forth between the maintainers of the master branch and yourself (the person that created the pull request). If you need to make additional changes to your <code>feature</code> branch after discussion, you can commit the changes to the <code>feature</code> branch again and then push the change. Pull requests can be written in Markdown so you can easily add images and other markdown formatting.</p></li>
-<li><p><strong>Merge</strong>: Now that the code and files you have committed have passed all your testing, you can merge the changes to the existing <code>master</code> repository so that now they form part of the <code>master</code> repository. The good thing about all this process is that all the changes made during this process are preserved and anyone can track changes made in each merge and why they were made.</p></li>
+<li>a directory linked to a remote GitHub repository</li>
+<li>an RStudio Project file (<code>.Rproj</code>)</li>
+<li>a <code>README.md</code> file with information about the the project</li>
+<li>a <code>.gitignore</code> file listing all files not to be tracked (more on this one later)</li>
 </ul>
-<p>Let us do this whole process in action on GitHub!</p>
-<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQPhU3xOFvFnb-gNhrW2dotoz7BIcrKaBe6fpTMjvBbp3egSXtZUw9J6UcfwuZV21m_JO4Xd5BtQ0Ne/embed?start=true&amp;loop=true&amp;delayms=3000" frameborder="0" width="820" height="480" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true">
-</iframe>
-<p> </p>
-<div id="git-with-rstudio" class="section level3">
-<h3>Git with RStudio</h3>
-<p>So far we have learned how to do the main GitHub operations directly on GitHub. We will now will look how we can perform the same operations in RStudio. Why do you want to do this in RStudio? If you are writing your code in R, it will make more sense to use the inbuilt RStudio integration of git, in this way you do not need to switch back and forth to GitHub.</p>
-<div id="practical-in-the-classroom" class="section level4">
-<h4>Practical in the classroom</h4>
-<!--
-Follow this tutorial to commit changes through RStudio:
-http://www.geo.uzh.ch/microsite/reproducible_research/post/rr-rstudio-git/
-
-
-https://sarahlrstevens.info/git-novice-mod/14-supplemental-rstudio/
-https://www.nceas.ucsb.edu/~brun/RStudio_intro/2-getting-started-with-git-in-RStudio.html
-https://audhalbritter.com/wp-content/uploads/2016/12/Github-%E2%80%93-R-studio-Cheat-Sheet.pdf
-https://www.youtube.com/watch?v=E2d91v1Twcc
-
--->
+<p><br /><br /></p>
 </div>
 </div>
 </div>
+<div id="use-git-in-r-studio" class="section level1">
+<h1>Use git in R Studio</h1>
+<hr />
+<p>When you clone a repository from GitHub, all files included are downloaded onto your computer. Since the repository we created on GitHub only included the README.md file, that’s all that was clone. Do practice the git workflow, let’s populate the repository.</p>
+<p><br /></p>
+<div id="create-a-folder-structure" class="section level2">
+<h2>Create a folder structure</h2>
+<p>Let’s start with a good file structure right from the beginning. Drawing from the first session on this course, go ahead and create a folder structure for you project. I usually at least create folders for <code>data</code>, <code>scripts</code> and <code>results</code>. You can do this directly in R Studio by clicking on ‘Files - New Folder’.</p>
+<p><br /></p>
+<p><img src="img/flow_folder.png" style="width:40.0%" /></p>
+<p><br /></p>
+</div>
+<div id="create-files" class="section level2">
+<h2>Create files</h2>
+<p>For the fun of it, let’s create the first script in our repository. I created an R Markdown document (‘File - New File - R Markdown…’) and saved it into the ‘scripts’ folder in this repository I created earlier. Note how you can navigate through the folders in your repository in the ‘File’ tab in R Studio.</p>
+<p>I.e. here I have navigates into said ‘scripts’ folder:</p>
+<p><br /></p>
+<p><img src="img/commit_scripts.png" style="width:40.0%" /></p>
+<p><br /></p>
+</div>
+<div id="edit-your-scripts" class="section level2">
+<h2>Edit your scripts</h2>
+<p>Let’s make an edit to an already existing file. Open the README.md and add a line of text to it. Then save it.</p>
+<p><br /></p>
+<p><img src="img/flow_file.png" style="width:40.0%" /></p>
+<p><br /></p>
+</div>
+<div id="push-our-changes" class="section level2">
+<h2>Push our changes</h2>
+<p>Now that we have done some changes to our local repository, we want to ‘push’ them to the remote repository. Basically, we are telling the remote repository ‘Hey, I here are the changes I have done, please integrate them into your version of the repository!’.</p>
+<p>This workflow consists of three stages:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Staging:</strong> Select the files to be pushed. To do so, click on ‘Git’ at the top right.</li>
+</ol>
+<p><br /></p>
+<p><img src="img/commit_stage.png" style="width:40.0%" /></p>
+<p><br /></p>
+<p>R Studio will show you all files that have been changed since your last commit. Select the files you’d like to commit to the remote repository by clicking on the boxes under ‘Staged’. R Studio is helping you here, by displaying little blue ‘M’s to indicate a file has been’<em>M</em>odified’; yellow ‘?’ indicate untracked file; green ‘A’s mean’<em>A</em>dded’.</p>
+<p><br /></p>
+<p><img src="img/commit_commit.png" style="width:40.0%" /></p>
+<p><br /></p>
+<ol start="2" style="list-style-type: decimal">
+<li><strong>Committing:</strong> Committing consists on reviewing, commenting and accepting the changes before pulling the new version of the file into the remote repository.</li>
+</ol>
+<p>Click on ‘Commit’. A new window will appear where added code is shown in green whereas the deleted code is in red. Make sure to add a comment describing what changes you have made to your commit. This is particularly helpful should you ever want to revert to earlier versions of you repository, for example when debugging.</p>
+<p>Once ready, click on ‘Commit’.</p>
+<p><br /></p>
+<p><img src="img/commit_check.png" style="width:50.0%" /></p>
+<p><br /></p>
+<ol start="3" style="list-style-type: decimal">
+<li><strong>Pushing:</strong> Pushing takes your ‘commit’ and transfers those changes to the remote repository.</li>
+</ol>
+<p><br /></p>
+<p><img src="img/commit_push.png" style="width:50.0%" /></p>
+<p><br /></p>
+<p>Congratulations, you have just made your first commit!</p>
+<p><br /></p>
+<div class="taskbox">
+<div class="taskbox-title">
+<p><font size="5"> <i class="fas fa-exclamation-circle"></i> <strong>Summary</strong> </font></p>
+</div>
+<ol style="list-style-type: decimal">
+<li>git/GitHub is a powerful distributed version control system that allows you to track the history of changes to your work. Version control is like an unlimited ‘undo’.</li>
+<li>R Studio allows you to directly interact with git. How convenient!</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="further-resources" class="section level1">
+<h1>Further Resources</h1>
+<hr />
+<p>Version control also allows many people to work in parallel. To start <strong>collaborating</strong> on projects using git/GitHub, checkout this <a href="https://swcarpentry.github.io/git-novice/08-collab/index.html">resource</a>.</p>
 </div>
 
 
@@ -500,7 +601,7 @@ https://www.youtube.com/watch?v=E2d91v1Twcc
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();
@@ -539,7 +640,7 @@ $(document).ready(function ()  {
       theme: "bootstrap3",
       context: '.toc-content',
       hashGenerator: function (text) {
-        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
       },
       ignoreSelector: ".toc-ignore",
       scrollTo: 0
