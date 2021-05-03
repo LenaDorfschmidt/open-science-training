@@ -410,6 +410,7 @@ div.tocify {
 <h1>The very basics</h1>
 <hr />
 <p>R Markdown is a great tool to document and share your work! R Markdown documents allow you to combine text, and code, images.</p>
+<p><br /></p>
 <div id="setup-document" class="section level2">
 <h2>Setup document</h2>
 <p>Let’s create your first R Markdown documents.</p>
@@ -427,6 +428,7 @@ div.tocify {
 <p class="caption">Output format</p>
 </div>
 <p>This will provide you with a template for an R Markdown document. In this file, you will be able to write code and text, and even import images in R Studio. Sounds pretty awesome, doesn’t it? Let’t chickly safe the file so that we don’t loose anything. Click on <em>File - Save</em> and give it a filename.</p>
+<p><br /></p>
 </div>
 <div id="knit" class="section level2">
 <h2>Knit</h2>
@@ -445,17 +447,19 @@ output: html_document:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```</code></pre>
+<p><br /><br /></p>
 </div>
 </div>
 <div id="basic-r-markdown-text-production" class="section level1">
 <h1>Basic R Markdown text production</h1>
 <hr />
 <p>Using R Markdown documents to write reports will likely mean you will want to include some text.</p>
+<p><br /></p>
 <div id="headings" class="section level3">
 <h3>Headings</h3>
 <hr />
 <p>You can structure your reports by including headings and subsections. Headings are added by adding a <code>#</code> before your heading. Adding more <code>#</code> makes your heading a sub(or sub, or sub-sub-) heading.</p>
-<pre><code>## Heading 2
+<pre><code>## Heading 2 
 ### Heading 3
 #### Heading 4</code></pre>
 <p>Which should look like this:</p>
@@ -467,6 +471,7 @@ knitr::opts_chunk$set(echo = TRUE)
 <div id="heading-4" class="section level4 unlisted unnumbered">
 <h4 class="unlisted unnumbered">Heading 4</h4>
 <p>Give this a try. Create a couple of headings in your report and type some text below.</p>
+<p><br /></p>
 </div>
 </div>
 </div>
@@ -482,6 +487,7 @@ This however will be one!</code></pre>
 <p>This is your first sentence. This will NOT be a new paragraph.</p>
 <p>This however will be one!</p>
 <p>Give this a try with the text you have added before. Create some paragraphs and subsections.</p>
+<p><br /></p>
 </div>
 <div id="lists" class="section level2">
 <h2>Lists</h2>
@@ -517,6 +523,7 @@ This however will be one!</code></pre>
 <li>Well documented analyses allow to write papers more easily.</li>
 <li>Well documented analyses and open data allow for continuity of research.</li>
 </ol>
+<p><br /></p>
 </div>
 <div id="text-formatting" class="section level2">
 <h2>Text formatting</h2>
@@ -527,6 +534,59 @@ This however will be one!</code></pre>
 <blockquote>
 <p>Open research aims to transform research by making it more reproducible, transparent, reusable, collaborative, accountable, and accessible to society. (The Turing Way Community, 2019)</p>
 </blockquote>
+<p>Here is an overview of the in-text features R Markdown allows for:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Feature</th>
+<th align="right">R Markdown</th>
+<th align="left">Rendered</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">superscript</td>
+<td align="right"><code>2^nd^</code></td>
+<td align="left">2<sup>nd</sup></td>
+</tr>
+<tr class="even">
+<td align="right">subscript</td>
+<td align="right"><code>CO~2~</code></td>
+<td align="left">CO<sub>2</sub></td>
+</tr>
+<tr class="odd">
+<td align="right">strikethrough</td>
+<td align="right"><code>~~mistake~~</code></td>
+<td align="left"><del>mistake</del></td>
+</tr>
+<tr class="even">
+<td align="right">bold</td>
+<td align="right"><code>**bold**</code></td>
+<td align="left"><strong>bold</strong></td>
+</tr>
+<tr class="odd">
+<td align="right">italics</td>
+<td align="right"><code>*italics*</code></td>
+<td align="left"><em>italics</em></td>
+</tr>
+<tr class="even">
+<td align="right">code</td>
+<td align="right"><code>`code`</code></td>
+<td align="left"><code>code</code></td>
+</tr>
+<tr class="odd">
+<td align="right">links</td>
+<td align="right"><code>[text](http:://www.example.com/your-link-goes-here)</code></td>
+<td align="left"><a href="https://www.youtube.com/watch?v=c36UNSoJenI">text</a></td>
+</tr>
+<tr class="even">
+<td align="right">images</td>
+<td align="right"><code>![alternative text](link)</code></td>
+<td align="left"><code>![alternative text](link)</code></td>
+</tr>
+</tbody>
+</table>
+<p><br /></p>
 </div>
 <div id="code-blocks" class="section level2">
 <h2>Code Blocks</h2>
@@ -554,6 +614,7 @@ questionnaire = read.csv(&#39;data/baker_2016_edited.txt&#39;, sep=&quot;\t&quot
 <pre class="markdown"><code>```{r echo = F}
 
 ```</code></pre>
+<p><br /></p>
 </div>
 <div id="tables" class="section level2">
 <h2>Tables</h2>
@@ -612,6 +673,7 @@ questionnaire = read.csv(&#39;data/baker_2016_edited.txt&#39;, sep=&quot;\t&quot
 </tr>
 </tbody>
 </table>
+<p><br /></p>
 </div>
 <div id="figure-options" class="section level2">
 <h2>Figure Options</h2>
@@ -628,19 +690,23 @@ ggplot(questionnaire, aes(x=significance_crisis, fill = significance_crisis))+
 <p>This should create a plot like this:</p>
 <p><img src="rmarkdown_files/figure-html/unnamed-chunk-6-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Don’t want people to see your code? Remember to add <code>echo = F</code>. Find the output too big? You can decide on the exact dimensions (in inches) by adding <code>fig.width = 3, fig.height = 2</code>. Alternatively, you could scale it to a percentage of the original dimensions using: <code>out.width = '50%'</code>. Lastly, decide how the figure should aligned using <code>fig.align = 'center'</code>. Go ahead and give some of these options a try.</p>
+<p><br /><br /></p>
 </div>
 </div>
 <div id="external-image" class="section level1">
 <h1>External Image</h1>
+<hr />
 <p>Sometimes you may want to include an external image. I have added an image you could load in here to the <code>img</code> folder.</p>
 <p>You can include the image by adding an image title and the path to your image as such: <code>![alt text or image title](path/to/image)</code>. Note that you can control the size of the image included by adding a scaling factor, i.e. <code>![Reproducibility Table](img/reproducible-table.png){width=50%}</code>.</p>
 <div class="figure">
 <img src="img/reproducible-table.png" style="width:50.0%" alt="" />
 <p class="caption">Reproducibility Table</p>
 </div>
+<p><br /><br /></p>
 </div>
 <div id="yaml-header" class="section level1">
 <h1>YAML Header</h1>
+<hr />
 <p>Now that we actually have created some content, let’s look at some styling options for our document. The YAML header is the bit of code in the very beginning of your document:</p>
 <pre class="markdown"><code>---
 title: &quot;MyFirstMarkdownFile&quot;
@@ -694,6 +760,7 @@ output:
 <li>R Markdown documents are a powerful way of sharing your research analysis and results.</li>
 </ul>
 </div>
+<p><br /><br /></p>
 </div>
 <div id="further-resources" class="section level1">
 <h1>Further resources</h1>

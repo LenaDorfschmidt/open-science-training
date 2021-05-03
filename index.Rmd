@@ -11,9 +11,9 @@ output:
 htmltools::tagList(rmarkdown::html_dependency_font_awesome())
 ```
 ***
-<i class="fas fa-video"></i> &nbsp; [Zoom Link](www.thiswillbethezoomlink.co.uk) for lectures. 
+<i class="fas fa-video"></i> &nbsp; [Zoom Link](https://us02web.zoom.us/j/6546664658?pwd=UUZuRFRlNFRTczZUaXZiYjVYR3k1QT09) for lectures. 
 
-<i class="fab fa-slack"></i> &nbsp; [Slack Channel](www.thiswillbethezoomlink.co.uk) for communication during practicals.
+<i class="fab fa-slack"></i> &nbsp; [Slack Channel](https://app.slack.com/client/T01M8HZQ61G/C01M1QKPZ7G/thread/C01M1QLB3EJ-1616686358.005900) for communication during practicals.
 
 <i class="fas fa-chalkboard-teacher"></i> &nbsp; [Instructor](mailto:ld548@cam.ac.uk) Lena Dorfschmidt, *Brain Mapping Unit, Department of Psychiatry*
 

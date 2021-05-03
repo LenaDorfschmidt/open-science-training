@@ -41,6 +41,7 @@ htmltools::tagList(rmarkdown::html_dependency_font_awesome())
 R Markdown is a great tool to document and share your work! R Markdown documents allow you to combine text, and code, images. 
 
 
+<br />
 
 ## Setup document
 Let's create your first R Markdown documents. 
@@ -57,6 +58,8 @@ This should prompt a dialog that allows you to choose whether you want your outp
 
 This will provide you with a template for an R Markdown document. In this file, you will be able to write code and text, and even import images in R Studio. Sounds pretty awesome, doesn't it? 
 Let't chickly safe the file so that we don't loose anything. Click on *File - Save* and give it a filename. 
+
+<br />
 
 ## Knit
 ***
@@ -78,9 +81,13 @@ knitr::opts_chunk$set(echo = TRUE)
 `r ''````
 ````
 
+<br /><br />
+
 # Basic R Markdown text production
 ***
 Using R Markdown documents to write reports will likely mean you will want to include some text. 
+
+<br />
 
 ### Headings
 ***
@@ -88,17 +95,19 @@ Using R Markdown documents to write reports will likely mean you will want to in
 You can structure your reports by including headings and subsections. Headings are added by adding a `#` before your heading. Adding more `#` makes your heading a sub(or sub, or sub-sub-) heading. 
 
 ```
-## Heading 2
+## Heading 2 
 ### Heading 3
 #### Heading 4
 ```
 Which should look like this:
 
-## Heading 2{.unlisted .unnumbered}
-### Heading 3{.unlisted .unnumbered}
-#### Heading 4{.unlisted .unnumbered}
+## Heading 2 {.unlisted .unnumbered}
+### Heading 3 {.unlisted .unnumbered}
+#### Heading 4 {.unlisted .unnumbered}
 
 Give this a try. Create a couple of headings in your report and type some text below. 
+
+<br />
 
 ## Paragraphs
 ***
@@ -120,6 +129,8 @@ This will NOT be a new paragraph.
 This however will be one!
 
 Give this a try with the text you have added before. Create some paragraphs and subsections. 
+
+<br />
 
 ## Lists
 ***
@@ -159,6 +170,7 @@ Thoughts on why open and reproducible research is the future:
 3. Well documented analyses allow to write papers more easily.
 4. Well documented analyses and open data allow for continuity of research.  
 
+<br />
 
 ## Text formatting
 ***
@@ -170,6 +182,20 @@ Lastly, you can of course include quotes:
 
 > Open research aims to transform research by making it more reproducible, transparent, reusable, collaborative, accountable, and accessible to society. (The Turing Way Community, 2019)
 
+Here is an overview of the in-text features R Markdown allows for:
+
+|  Feature        | R Markdown    | Rendered     |
+|----------------:|--------------:|:-------------|
+|  superscript    |  `2^nd^`      | 2^nd^        |
+|  subscript      |  `CO~2~`      | CO~2~        |
+|  strikethrough  |  `~~mistake~~`| ~~mistake~~  |
+|  bold           |  `**bold**`   | **bold**     |
+|  italics        |  `*italics*`  | *italics*    |
+|  code           |  `` `code` `` | `code`       |
+| links           | `[text](http:://www.example.com/your-link-goes-here)`| [text](https://www.youtube.com/watch?v=c36UNSoJenI) |
+| images          | `![alternative text](link)` | `![alternative text](link)`|
+
+<br />
 
 ## Code Blocks
 ***
@@ -216,6 +242,8 @@ However, we also see the code you used to produce the table. If you just want to
 `r ''````
 ````
 
+<br />
+
 ## Tables
 ***
 While the code above works well to demonstrate some options in R Markdown, the table that is output does not actually look too pretty. Let's change that. The `knitr::kable()` function allows you to easily create pretty tables. Try out changing the above `head(questionnaire[,c(1,11,28,29)])` to:
@@ -227,6 +255,7 @@ knitr::kable(
   caption = 'A table that now looks much prettier.') # Here we are adding a caption 
 ```
 
+<br />
 
 ## Figure Options
 ***
@@ -259,8 +288,10 @@ ggplot(questionnaire, aes(x=significance_crisis, fill = significance_crisis))+
 
 Don't want people to see your code? Remember to add `echo = F`. Find the output too big? You can decide on the exact dimensions (in inches) by adding `fig.width = 3, fig.height = 2`. Alternatively, you could scale it to a percentage of the original dimensions using: `out.width = '50%'`. Lastly, decide how the figure should aligned using `fig.align = 'center'`. Go ahead and give some of these options a try. 
 
+<br /><br />
 
 # External Image
+***
 
 Sometimes you may want to include an external image. I have added an image you could load in here to the `img` folder. 
 
@@ -269,7 +300,11 @@ You can  include the image by adding an image title and the path to your image a
 
 ![Reproducibility Table](img/reproducible-table.png){width=50%}
 
+<br /><br />
+
 # YAML Header
+***
+
 Now that we actually have created some content, let's look at some styling options for our document.
 The YAML header is the bit of code in the very beginning of your document:
 
@@ -350,6 +385,14 @@ output:
 * R Markdown documents are a powerful way of sharing your research analysis and results. 
 
 ::::
+
+<br /><br />
+
+# Tips and Tricks
+
+## File Paths
+
+Are you still using file paths of the like of `/Users/lena/Documents/...`? Please don't! File paths like this mean that running your scripts on any computer other than your own becomes a path-setting-exercise. One thing that is great about R projects is that paths  
 
 
 # Further resources
