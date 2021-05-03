@@ -11,6 +11,8 @@ navbar:
       href: rmarkdown.html
     - text: "Version Control"
       href: git.html
+    - text: "Further Ideas"
+      href: further_ideas.html
 output:
   html_document:
     css: style.css

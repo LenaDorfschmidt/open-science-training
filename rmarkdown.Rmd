@@ -219,19 +219,19 @@ Go ahead and create a new code chunk Now in that code chunk, type the following 
 
 ```{r }
 # read in data
-questionnaire = read.csv('data/baker_2016_edited.txt', sep="\t")
+questionnaire = read.csv('data/baker2016-edited.csv')
 ```
 
 As a first step, we probably want to get an idea of what the data looks like. The dataframe is pretty big, so I suggest you select a few columns to display as such:
 
 ```{r eval=F}
-head(questionnaire[,c(1,11,28,29)])
+head(questionnaire)
 ```
 
 If you now knit the file, you should see the head of the dataframe displayed:
 
 ```{r echo=F}
-head(questionnaire[,c(1,11,28,29)])
+head(questionnaire)
 ```
 
 
@@ -251,7 +251,7 @@ While the code above works well to demonstrate some options in R Markdown, the t
 
 ```{r }
 knitr::kable(
-  head(questionnaire[,c(1,11,28,29)]), # This is the table we will plot
+  head(questionnaire), # This is the table we will plot
   booktabs = TRUE, # We determine the formatting style as 'booktabs'
   caption = 'A table that now looks much prettier.') # Here we are adding a caption 
 ```
@@ -261,11 +261,11 @@ knitr::kable(
 ## Figure Options
 ***
 Perfect. Let's plot some data. 
-Create a new code chunk and paste this code into it. Make sure you have the `ggplot2` library installed. If you haven't, install it first by typing `install.packages('ggplot2')` into the console. 
+Create a new code chunk and paste this code into it. Make sure you have the `ggplot2` library installed. If you haven't, install it first by typing `install.packages('ggplot2')` into the console. Don't worry if you are not familiar with ggplot syntaxt yet, just copy and paste the code. 
 
 ```{r eval = F}
 library(ggplot2)
-ggplot(questionnaire, aes(x=significance_crisis, fill = significance_crisis))+
+ggplot(questionnaire, aes(x=crisis_agree, fill = crisis_agree))+
   geom_bar(aes(y = (..count..)/sum(..count..)))+
   ylab('Percentage')+
   coord_flip()+
@@ -278,7 +278,7 @@ This should create a plot like this:
 
 ```{r echo = F, fig.align = "center"}
 library(ggplot2)
-ggplot(questionnaire, aes(x=significance_crisis, fill = significance_crisis))+
+ggplot(questionnaire, aes(x=crisis_agree, fill = crisis_agree))+
   geom_bar(aes(y = (..count..)/sum(..count..)))+
   ylab('Percentage')+
   coord_flip()+
