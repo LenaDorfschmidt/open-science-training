@@ -3,6 +3,7 @@ title: "Reproducible Research (in R)"
 author:  Lena Dorfschmidt
 output:
   html_document: 
+    number_sections: true
     toc: true
     toc_float: true
     toc_depth: 6
@@ -79,6 +80,9 @@ For your username...
 
 Further, you may want to use your “.ac.uk” email for your account, since this allows you to request free private repositories via GitHub Education.
 </div>
+
+<br /><br /><br />
+
 
 ## Install Git
 

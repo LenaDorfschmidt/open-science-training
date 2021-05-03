@@ -374,6 +374,9 @@ div.tocify {
 <li>
   <a href="git.html">Version Control</a>
 </li>
+<li>
+  <a href="further_ideas.html">Further Ideas</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         
@@ -406,38 +409,29 @@ div.tocify {
 </ol>
 </div>
 <p><br> <br></p>
-<div id="the-very-basics" class="section level1">
-<h1>The very basics</h1>
+<div id="the-very-basics" class="section level1" number="1">
+<h1 number="1"><span class="header-section-number">1</span> The very basics</h1>
 <hr />
 <p>R Markdown is a great tool to document and share your work! R Markdown documents allow you to combine text, and code, images.</p>
 <p><br /></p>
-<div id="setup-document" class="section level2">
-<h2>Setup document</h2>
+<div id="setup-document" class="section level2" number="1.1">
+<h2 number="1.1"><span class="header-section-number">1.1</span> Setup document</h2>
 <p>Let’s create your first R Markdown documents.</p>
 <ol style="list-style-type: decimal">
 <li>Open RStudio</li>
 <li>Create a new R Markdown file. To do so, click on <em>File -&gt; New File -&gt; R Markdown</em></li>
 </ol>
-<div class="figure">
-<img src="img/create-file.png" style="width:50.0%" alt="" />
-<p class="caption">Create R Markdown File</p>
-</div>
+<p><img src="img/create-file.png" style="width:50.0%" /></p>
 <p>This should prompt a dialog that allows you to choose whether you want your output to be in html, pdf or word format. For now, we will go with html, but you can always change this later.</p>
-<div class="figure">
-<img src="img/file-settings.png" style="width:50.0%" alt="" />
-<p class="caption">Output format</p>
-</div>
+<p><img src="img/file-settings.png" style="width:50.0%" /></p>
 <p>This will provide you with a template for an R Markdown document. In this file, you will be able to write code and text, and even import images in R Studio. Sounds pretty awesome, doesn’t it? Let’t chickly safe the file so that we don’t loose anything. Click on <em>File - Save</em> and give it a filename.</p>
 <p><br /></p>
 </div>
-<div id="knit" class="section level2">
-<h2>Knit</h2>
+<div id="knit" class="section level2" number="1.2">
+<h2 number="1.2"><span class="header-section-number">1.2</span> Knit</h2>
 <hr />
 <p>Now to really make things look pretty (aka compile the html document) we need to <em>knit</em> the file. In order to do so, simply click on <em>knit</em> on the top left.</p>
-<div class="figure">
-<img src="img/knit.png" style="width:50.0%" alt="" />
-<p class="caption">Knit</p>
-</div>
+<p><img src="img/knit.png" style="width:50.0%" /></p>
 <p>Let’s get starting filling this document with some content, but first of all, we should get rid of all the template content provided. Make sure to keep the header, and the piece of code that set’s up the structure of the document, but delete everything below. You should just be left with this bit of the code:</p>
 <pre class="markdown"><code>---
 title: &quot;Intro to R Markdown&quot;
@@ -450,13 +444,13 @@ knitr::opts_chunk$set(echo = TRUE)
 <p><br /><br /></p>
 </div>
 </div>
-<div id="basic-r-markdown-text-production" class="section level1">
-<h1>Basic R Markdown text production</h1>
+<div id="basic-r-markdown-text-production" class="section level1" number="2">
+<h1 number="2"><span class="header-section-number">2</span> Basic R Markdown text production</h1>
 <hr />
 <p>Using R Markdown documents to write reports will likely mean you will want to include some text.</p>
 <p><br /></p>
-<div id="headings" class="section level3">
-<h3>Headings</h3>
+<div id="headings" class="section level2" number="2.1">
+<h2 number="2.1"><span class="header-section-number">2.1</span> Headings</h2>
 <hr />
 <p>You can structure your reports by including headings and subsections. Headings are added by adding a <code>#</code> before your heading. Adding more <code>#</code> makes your heading a sub(or sub, or sub-sub-) heading.</p>
 <pre><code>## Heading 2 
@@ -475,8 +469,8 @@ knitr::opts_chunk$set(echo = TRUE)
 </div>
 </div>
 </div>
-<div id="paragraphs" class="section level2">
-<h2>Paragraphs</h2>
+<div id="paragraphs" class="section level2" number="2.2">
+<h2 number="2.2"><span class="header-section-number">2.2</span> Paragraphs</h2>
 <hr />
 <p>You create paragraphs by leaving an empty line between sentences. That is to say simply hitting enter won’t do the job, you actually need to leave an empty line.</p>
 <pre><code>This is your first sentence. 
@@ -489,8 +483,8 @@ This however will be one!</code></pre>
 <p>Give this a try with the text you have added before. Create some paragraphs and subsections.</p>
 <p><br /></p>
 </div>
-<div id="lists" class="section level2">
-<h2>Lists</h2>
+<div id="lists" class="section level2" number="2.3">
+<h2 number="2.3"><span class="header-section-number">2.3</span> Lists</h2>
 <hr />
 <p>You can include lists - both unstructured and structured:</p>
 <pre><code>* It creates trust in research results 
@@ -525,8 +519,8 @@ This however will be one!</code></pre>
 </ol>
 <p><br /></p>
 </div>
-<div id="text-formatting" class="section level2">
-<h2>Text formatting</h2>
+<div id="text-formatting" class="section level2" number="2.4">
+<h2 number="2.4"><span class="header-section-number">2.4</span> Text formatting</h2>
 <hr />
 <p>You can make text <em>italic</em> (<code>*italic*</code>) or <strong>bold</strong> (<code>**bold**</code>), and include inline <code>code</code> (<code>`code`</code>).</p>
 <p>You can also include links <code>[text](link)</code>, i.e. <code>[Cambridge Neuroscience](https://www.neuroscience.cam.ac.uk)</code> get’s you to <a href="https://www.neuroscience.cam.ac.uk">Cambridge Neuroscience</a>.</p>
@@ -588,8 +582,8 @@ This however will be one!</code></pre>
 </table>
 <p><br /></p>
 </div>
-<div id="code-blocks" class="section level2">
-<h2>Code Blocks</h2>
+<div id="code-blocks" class="section level2" number="2.5">
+<h2 number="2.5"><span class="header-section-number">2.5</span> Code Blocks</h2>
 <hr />
 <p>The great thing about R Markdown is that you can add code directly into your report. This will allow you to add plots - and even show the code that produced it.</p>
 <p>You can add codeblocks either by clicking on <code>Code &gt; Insert Chunk</code>, or by adding the following directly:</p>
@@ -616,8 +610,8 @@ questionnaire = read.csv(&#39;data/baker_2016_edited.txt&#39;, sep=&quot;\t&quot
 ```</code></pre>
 <p><br /></p>
 </div>
-<div id="tables" class="section level2">
-<h2>Tables</h2>
+<div id="tables" class="section level2" number="2.6">
+<h2 number="2.6"><span class="header-section-number">2.6</span> Tables</h2>
 <hr />
 <p>While the code above works well to demonstrate some options in R Markdown, the table that is output does not actually look too pretty. Let’s change that. The <code>knitr::kable()</code> function allows you to easily create pretty tables. Try out changing the above <code>head(questionnaire[,c(1,11,28,29)])</code> to:</p>
 <pre class="r"><code>knitr::kable(
@@ -675,8 +669,8 @@ questionnaire = read.csv(&#39;data/baker_2016_edited.txt&#39;, sep=&quot;\t&quot
 </table>
 <p><br /></p>
 </div>
-<div id="figure-options" class="section level2">
-<h2>Figure Options</h2>
+<div id="figure-options" class="section level2" number="2.7">
+<h2 number="2.7"><span class="header-section-number">2.7</span> Figure Options</h2>
 <hr />
 <p>Perfect. Let’s plot some data. Create a new code chunk and paste this code into it. Make sure you have the <code>ggplot2</code> library installed. If you haven’t, install it first by typing <code>install.packages('ggplot2')</code> into the console.</p>
 <pre class="r"><code>library(ggplot2)
@@ -693,19 +687,16 @@ ggplot(questionnaire, aes(x=significance_crisis, fill = significance_crisis))+
 <p><br /><br /></p>
 </div>
 </div>
-<div id="external-image" class="section level1">
-<h1>External Image</h1>
+<div id="external-image" class="section level1" number="3">
+<h1 number="3"><span class="header-section-number">3</span> External Image</h1>
 <hr />
 <p>Sometimes you may want to include an external image. I have added an image you could load in here to the <code>img</code> folder.</p>
 <p>You can include the image by adding an image title and the path to your image as such: <code>![alt text or image title](path/to/image)</code>. Note that you can control the size of the image included by adding a scaling factor, i.e. <code>![Reproducibility Table](img/reproducible-table.png){width=50%}</code>.</p>
-<div class="figure">
-<img src="img/reproducible-table.png" style="width:50.0%" alt="" />
-<p class="caption">Reproducibility Table</p>
-</div>
+<p><img src="img/reproducible-table.png" style="width:50.0%" /></p>
 <p><br /><br /></p>
 </div>
-<div id="yaml-header" class="section level1">
-<h1>YAML Header</h1>
+<div id="yaml-header" class="section level1" number="4">
+<h1 number="4"><span class="header-section-number">4</span> YAML Header</h1>
 <hr />
 <p>Now that we actually have created some content, let’s look at some styling options for our document. The YAML header is the bit of code in the very beginning of your document:</p>
 <pre class="markdown"><code>---
@@ -762,8 +753,15 @@ output:
 </div>
 <p><br /><br /></p>
 </div>
-<div id="further-resources" class="section level1">
-<h1>Further resources</h1>
+<div id="tips-and-tricks" class="section level1" number="5">
+<h1 number="5"><span class="header-section-number">5</span> Tips and Tricks</h1>
+<div id="file-paths" class="section level2" number="5.1">
+<h2 number="5.1"><span class="header-section-number">5.1</span> File Paths</h2>
+<p>Are you still using file paths of the like of <code>/Users/lena/Documents/...</code>? Please don’t! File paths like this mean that running your scripts on any computer other than your own becomes a path-setting-exercise. One thing that is great about R projects is that paths</p>
+</div>
+</div>
+<div id="further-resources" class="section level1" number="6">
+<h1 number="6"><span class="header-section-number">6</span> Further resources</h1>
 <hr />
 <p>This <a href="https://rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf?_ga=2.130692559.1531018005.1610984746-1259499429.1600070494">cheatsheet</a> is a great resource to have at hand when you get started.</p>
 <p><a href="https://rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf">Here</a> you find details on many more options to stylize your reports than we have discussed here.</p>

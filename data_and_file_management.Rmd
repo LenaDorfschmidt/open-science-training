@@ -1,6 +1,7 @@
 ---
 output:
   html_document: 
+    number_sections: true
     toc: true
     toc_float: true
     toc_depth: 6
@@ -53,6 +54,8 @@ library(here)
 
 The first thing we will have noticed upon downloading the data is the spaces in the file name which should make the hair stand up on the back of your neck! We'll deal with that in a moment!
 
+<br/>
+
 # Loading in data
 
 First of all, let's read in the data and inspect it a little:
@@ -71,6 +74,8 @@ None of those makes us happy. Remember that you can access column names using:
 ```{r eval=F}
 colnames(data_dirty)
 ```
+
+<br/>
 
 # Merge columnnames
 
@@ -99,6 +104,8 @@ colnames(data_clean)[c(7,8,9)] <- paste0('published_manuscript-',colnames(data_c
 
 You could go ahead and add other prefixed to the other columns we just edited. 
 
+<br/>
+
 # Tidy up column names
 
 Another common task in cleaning your data may be to tidy up column names. In this case, we may want to replace all spaces in column names by underscores and make the column names all lower case. With different data, you may come across different problems, but hopefully this helps you get an idea of how to approach the problem of renaming column names. 
@@ -118,6 +125,8 @@ colnames(data_clean) <- colnames(data_clean) %>%
 
 The `stringr` package included in `tidyverse` is a great tool to reformat your column names (and any other strings). To apply it more generally to your data, check out their [cheatsheet](https://github.com/rstudio/cheatsheets/blob/master/strings.pdf).
 
+<br/>
+
 # Remove empty lines
 
 Lastly, as a quick check, let's make sure we don't have any empty rows in our data. I am just quickly plotting the number of `NA` per row. 
@@ -128,6 +137,7 @@ hist(rowSums(is.na(data_clean)), main='Number of NAs per Row',xlab='N NA per Row
 
 If you have a look at the questions, some are not meant to be answered by all participants, so the fact that we see a number of outliers per subject here isn't super concerning. All I wanted to know here is that we don't have data entry problems where complete rows are empty. Looks like we are all good!
 
+<br/>
 
 # Save data
 
@@ -153,5 +163,6 @@ write.csv(data_clean, file=here('data/data_clean.csv'), row.names = F)
 
 # Further Resources
 
+Learn what copyright permissions you can use to publish your data, code and tools by having a look at [creative commons licenses](https://creativecommons.org/licenses/). 
 
 

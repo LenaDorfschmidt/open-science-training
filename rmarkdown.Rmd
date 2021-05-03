@@ -1,6 +1,7 @@
 ---
 output:
-  html_document: 
+  html_document:
+    number_sections: true 
     toc: true
     toc_float: true
     toc_depth: 6
@@ -49,12 +50,12 @@ Let's create your first R Markdown documents.
 1. Open RStudio
 2. Create a new R Markdown file. To do so, click on *File -> New File -> R Markdown*
 
-![Create R Markdown File](img/create-file.png){width=50%}
+![](img/create-file.png){width=50%}
 
 This should prompt a dialog that allows you to choose whether you want your output to be in html, pdf or word format. For now, we will go with html, but you can always change this later. 
 
 
-![Output format](img/file-settings.png){width=50%}
+![](img/file-settings.png){width=50%}
 
 This will provide you with a template for an R Markdown document. In this file, you will be able to write code and text, and even import images in R Studio. Sounds pretty awesome, doesn't it? 
 Let't chickly safe the file so that we don't loose anything. Click on *File - Save* and give it a filename. 
@@ -66,7 +67,7 @@ Let't chickly safe the file so that we don't loose anything. Click on *File - Sa
 
 Now to really make things look pretty (aka compile the html document) we need to *knit* the file. In order to do so, simply click on *knit* on the top left. 
 
-![Knit](img/knit.png){width=50%}
+![](img/knit.png){width=50%}
 
 Let's get starting filling this document with some content, but first of all, we should get rid of all the template content provided. Make sure to keep the header, and the piece of code that set's up the structure of the document, but delete everything below. You should just be left with this bit of the code:
 
@@ -89,7 +90,7 @@ Using R Markdown documents to write reports will likely mean you will want to in
 
 <br />
 
-### Headings
+## Headings
 ***
 
 You can structure your reports by including headings and subsections. Headings are added by adding a `#` before your heading. Adding more `#` makes your heading a sub(or sub, or sub-sub-) heading. 
@@ -298,7 +299,7 @@ Sometimes you may want to include an external image. I have added an image you c
 You can  include the image by adding an image title and the path to your image as such: `![alt text or image title](path/to/image)`. Note that you can control the size of the image included by adding a scaling factor, i.e. `![Reproducibility Table](img/reproducible-table.png){width=50%}`.
 
 
-![Reproducibility Table](img/reproducible-table.png){width=50%}
+![](img/reproducible-table.png){width=50%}
 
 <br /><br />
 

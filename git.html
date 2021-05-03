@@ -374,6 +374,9 @@ div.tocify {
 <li>
   <a href="git.html">Version Control</a>
 </li>
+<li>
+  <a href="further_ideas.html">Further Ideas</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         
@@ -407,47 +410,60 @@ div.tocify {
 </ol>
 </div>
 <p><br /> <br /></p>
-<div id="version-control" class="section level1">
-<h1>Version Control</h1>
+<div id="version-control" class="section level1" number="1">
+<h1 number="1"><span class="header-section-number">1</span> Version Control</h1>
 <hr />
 <p>Version control is a system that allows you to keep track of changes done to your files. Here, we will focus on how to use git/GitHub to track <em>your own</em> changes to your project, but distributed version control systems like gitHub can also be used to collaborate on projects. Check out this <a href="https://swcarpentry.github.io/git-novice/08-collab/index.html">resource</a> if you’d like to learn more about how to use git/GitHub for collaboration.</p>
+<br />
+<center>
+<img src="img/git_workflow_general.png" style="width:70.0%" />
+</center>
+<p><br /></p>
+<p>As a reminder, the git workflow mainly consists of:</p>
+<ul>
+<li><code>git clone</code>: copying a remote repository to local</li>
+<li><code>git add</code> and stage: informs git of a set of changes to be tracked</li>
+<li><code>git commit</code>: stores a set of changes as a version</li>
+<li><code>git pull</code>: merges changes from a remote repository to the local repository</li>
+<li><code>git push</code>: copies changes from our local repository to a remote repository</li>
+</ul>
 <p><br /><br /></p>
 </div>
-<div id="setup-git" class="section level1">
-<h1>Setup Git</h1>
+<div id="setup-git" class="section level1" number="2">
+<h1 number="2"><span class="header-section-number">2</span> Setup Git</h1>
 <hr />
-<div id="installation" class="section level2">
-<h2>Installation</h2>
+<div id="installation" class="section level2" number="2.1">
+<h2 number="2.1"><span class="header-section-number">2.1</span> Installation</h2>
 <p>First, let’s figure out if you already have git installed. Go to the shell and enter <code>which git</code> to request the path to your Git executable:</p>
 <pre class="markdown"><code>which git
 ## /usr/bin/git</code></pre>
 <p>If this is successfull: great! Move on to the next section. If not, then you should install git.</p>
-<div id="mac" class="section level3">
-<h3>Mac</h3>
+<div id="mac" class="section level3" number="2.1.1">
+<h3 number="2.1.1"><span class="header-section-number">2.1.1</span> Mac</h3>
 <p>If you have homebrew installed, you can type <code>brew install git</code> in the command line. Should you not have homebrew installed, you can also install git from here: <a href="http://git-scm.com/downloads" class="uri">http://git-scm.com/downloads</a></p>
 </div>
-<div id="windows" class="section level3">
-<h3>Windows</h3>
+<div id="windows" class="section level3" number="2.1.2">
+<h3 number="2.1.2"><span class="header-section-number">2.1.2</span> Windows</h3>
 <p>For windows users, I’d recommend you install <a href="https://gitforwindows.org">Git for Windows</a>. Use the default settings except for when asked about ‘When asked about ’Adjusting your PATH environment’: Here, select ‘, make sure to select ’Git from the command line and also from 3rd-party software’.</p>
 </div>
-<div id="linux" class="section level3">
-<h3>Linux</h3>
+<div id="linux" class="section level3" number="2.1.3">
+<h3 number="2.1.3"><span class="header-section-number">2.1.3</span> Linux</h3>
 <p>On Linux, you can install git by typing <code>sudo apt-get install git</code>.</p>
 <p>Done? Perfect, let’s move on.</p>
 <p><br /><br /></p>
 </div>
 </div>
-<div id="introduce-yourself-to-git" class="section level2">
-<h2>Introduce yourself to git</h2>
+<div id="introduce-yourself-to-git" class="section level2" number="2.2">
+<h2 number="2.2"><span class="header-section-number">2.2</span> Introduce yourself to git</h2>
 <p>We now need to tell git who you are. In the shell type: <code>git config --list --show-origin</code>. Git will tell you know what it already knows about you. If the <code>user.name</code> and <code>user.email</code> already show your git username and the email address you used to setup your account, you are done and can move one. If not, in the shell, enter the following. Substitue <code>YourUsername</code> and <code>your@emailaddress.com</code> with the information used for setting up your git account.</p>
 <pre class="markdown"><code>git config --global user.name &#39;YourUsername&#39;
 git config --global user.email &#39;your@emailaddress.com&#39;</code></pre>
 <p>Use <code>git config --list --show-origin</code> again to check this worked out.</p>
-<p><br /></p>
+<p><br /><br /><br /></p>
 </div>
 </div>
-<div id="creating-a-git-repository-on-github" class="section level1">
-<h1>Creating a git repository on GitHub</h1>
+<div id="creating-a-git-repository-on-github" class="section level1" number="3">
+<h1 number="3"><span class="header-section-number">3</span> Creating a git repository on GitHub</h1>
 <hr />
 <p>One easy way to create a git repository is to manually do so on GitHub. That’s how we will create our first repository. Go to <a href="https://github.com" class="uri">https://github.com</a> and log in.</p>
 <p>At the top left, click on ‘New’ to create a new repository.</p>
@@ -471,19 +487,19 @@ git config --global user.email &#39;your@emailaddress.com&#39;</code></pre>
 <p><img src="img/git_repo-setup.png" style="width:40.0%" /></p>
 <p><br /><br /></p>
 </div>
-<div id="setting-up-git-in-r-studio" class="section level1">
-<h1>Setting up git in R Studio</h1>
+<div id="setting-up-git-in-r-studio" class="section level1" number="4">
+<h1 number="4"><span class="header-section-number">4</span> Setting up git in R Studio</h1>
 <hr />
 <p>R Studio has a very useful feature which allows you to interact with your git repository from within R Studio, rather than having to revert to the shell or an external interface. Let’s setup that feature.</p>
 <p><br /></p>
-<div id="install-required-packages" class="section level2">
-<h2>Install required packages</h2>
+<div id="install-required-packages" class="section level2" number="4.1">
+<h2 number="4.1"><span class="header-section-number">4.1</span> Install required packages</h2>
 <p>Install <code>usethis</code>.</p>
 <pre class="markdown"><code>install.packages(&#39;usethis&#39;)</code></pre>
 <p><br /></p>
 </div>
-<div id="create-a-personal-access-token" class="section level2">
-<h2>Create a personal access token</h2>
+<div id="create-a-personal-access-token" class="section level2" number="4.2">
+<h2 number="4.2"><span class="header-section-number">4.2</span> Create a personal access token</h2>
 <p>To make your life easier and prevent having to enter your password and user name every time you commit to git, we will create a personal access token.</p>
 <pre class="r"><code>usethis::create_github_token(
   scopes = c(&quot;repo&quot;, &quot;gist&quot;, &quot;YourUsername:your@emailaddress.com&quot;),
@@ -496,22 +512,26 @@ git config --global user.email &#39;your@emailaddress.com&#39;</code></pre>
 <p><img src="img/Token_clipboard.png" style="width:60.0%" /> <br/></p>
 <p>Store the personal access token. Select ‘Replace these credentials’ (option 2) and paste the token when asked.</p>
 <pre class="r"><code>gitcreds::gitcreds_set()</code></pre>
-<p><img src="img/set_token.png" style="width:60.0%" /></p>
+<p><img src="img/set_token.png" style="width:30.0%" /></p>
 <p><br/> <br/> <br /></p>
 </div>
-<div id="clone-the-repository" class="section level2">
-<h2>Clone the repository</h2>
+<div id="clone-the-repository" class="section level2" number="4.3">
+<h2 number="4.3"><span class="header-section-number">4.3</span> Clone the repository</h2>
 <p>Until now, you repository only exists online on GitHub. We need to get it from there onto your local machine. This process is called ‘cloning’. To ‘clone’ means to make a local copy of a remote GitHub repository. This only needs to be done once.</p>
+<br />
+<center>
+<img src="img/git_workflow_clone.png" style="width:70.0%" />
+</center>
 <p><br /></p>
-<div id="copy-the-github-repositorys-url" class="section level3">
-<h3>Copy the GitHub repository’s URL</h3>
-<p>Got to the repository we just created on GitHub. Copy the URL. This should be <code>https://github.com/YourUsername/RepositoryName</code> where <code>YourUsername</code> is your GitHub username and <code>RepositoryRame</code> is the name you chose for your repository.</p>
+<div id="copy-the-github-repositorys-url" class="section level3 unlisted" number="4.3.1">
+<h3 class="unlisted" number="4.3.1"><span class="header-section-number">4.3.1</span> Copy the GitHub repository’s URL</h3>
+<p>In order to clone a repoistory, go to the repository we just created on GitHub. Copy the URL. This should be <code>https://github.com/YourUsername/RepositoryName</code> where <code>YourUsername</code> is your GitHub username and <code>RepositoryRame</code> is the name you chose for your repository.</p>
 <p><br /></p>
 <p><img src="img/git_repo-url.png" style="width:40.0%" /></p>
 <p><br /></p>
 </div>
-<div id="create-a-new-project" class="section level3">
-<h3>Create a new project</h3>
+<div id="create-a-new-project" class="section level3 unlisted" number="4.3.2">
+<h3 class="unlisted" number="4.3.2"><span class="header-section-number">4.3.2</span> Create a new project</h3>
 <p>Click on <code>File &gt; New Project &gt; Version Control &gt; Git</code>. A window will popup that allows you to specify where on GitHub R Studio should look for the repoistory.</p>
 <p>In the ‘Repository URL’ field paste the URL from your GitHub repository. Make sure that the Project directory name is the same as the GitHub repository (e.g above ‘myfirstrepository’). Make sure to choose the directory for you repository intentionally (and no, ‘Desktop’ and ‘Downloads’ are not acceptable options).</p>
 <p><br /></p>
@@ -528,40 +548,43 @@ git config --global user.email &#39;your@emailaddress.com&#39;</code></pre>
 </div>
 </div>
 </div>
-<div id="use-git-in-r-studio" class="section level1">
-<h1>Use git in R Studio</h1>
+<div id="use-git-in-r-studio" class="section level1" number="5">
+<h1 number="5"><span class="header-section-number">5</span> Use git in R Studio</h1>
 <hr />
-<p>When you clone a repository from GitHub, all files included are downloaded onto your computer. Since the repository we created on GitHub only included the README.md file, that’s all that was clone. Do practice the git workflow, let’s populate the repository.</p>
+<p>When you clone a repository from GitHub, all files included are downloaded onto your computer. Since the repository we created on GitHub only included the README.md file, that’s all that was clone. To practice the git workflow, let’s populate the repository.</p>
 <p><br /></p>
-<div id="create-a-folder-structure" class="section level2">
-<h2>Create a folder structure</h2>
+<div id="create-a-folder-structure" class="section level2" number="5.1">
+<h2 number="5.1"><span class="header-section-number">5.1</span> Create a folder structure</h2>
 <p>Let’s start with a good file structure right from the beginning. Drawing from the first session on this course, go ahead and create a folder structure for you project. I usually at least create folders for <code>data</code>, <code>scripts</code> and <code>results</code>. You can do this directly in R Studio by clicking on ‘Files - New Folder’.</p>
 <p><br /></p>
-<p><img src="img/flow_folder.png" style="width:40.0%" /></p>
-<p><br /></p>
 </div>
-<div id="create-files" class="section level2">
-<h2>Create files</h2>
+<div id="create-files" class="section level2" number="5.2">
+<h2 number="5.2"><span class="header-section-number">5.2</span> Create files</h2>
 <p>For the fun of it, let’s create the first script in our repository. I created an R Markdown document (‘File - New File - R Markdown…’) and saved it into the ‘scripts’ folder in this repository I created earlier. Note how you can navigate through the folders in your repository in the ‘File’ tab in R Studio.</p>
 <p>I.e. here I have navigates into said ‘scripts’ folder:</p>
 <p><br /></p>
 <p><img src="img/commit_scripts.png" style="width:40.0%" /></p>
 <p><br /></p>
 </div>
-<div id="edit-your-scripts" class="section level2">
-<h2>Edit your scripts</h2>
+<div id="edit-your-scripts" class="section level2" number="5.3">
+<h2 number="5.3"><span class="header-section-number">5.3</span> Edit your scripts</h2>
 <p>Let’s make an edit to an already existing file. Open the README.md and add a line of text to it. Then save it.</p>
 <p><br /></p>
-<p><img src="img/flow_file.png" style="width:40.0%" /></p>
+<p>#<img src="img/flow_file.png" style="width:40.0%" /></p>
 <p><br /></p>
 </div>
-<div id="push-our-changes" class="section level2">
-<h2>Push our changes</h2>
+<div id="push-our-changes" class="section level2" number="5.4">
+<h2 number="5.4"><span class="header-section-number">5.4</span> Push our changes</h2>
 <p>Now that we have done some changes to our local repository, we want to ‘push’ them to the remote repository. Basically, we are telling the remote repository ‘Hey, I here are the changes I have done, please integrate them into your version of the repository!’.</p>
-<p>This workflow consists of three stages:</p>
-<ol style="list-style-type: decimal">
-<li><strong>Staging:</strong> Select the files to be pushed. To do so, click on ‘Git’ at the top right.</li>
-</ol>
+<p>This workflow consists of three stages: staging, commit, and pushing:</p>
+<p><br /></p>
+<center>
+<img src="img/git_workflow_push.png" style="width:70.0%" />
+</center>
+<p><br /></p>
+<div id="staging" class="section level3 unlisted" number="5.4.1">
+<h3 class="unlisted" number="5.4.1"><span class="header-section-number">5.4.1</span> Staging</h3>
+<p>Select the files to be pushed. To do so, click on ‘Git’ at the top right.</p>
 <p><br /></p>
 <p><img src="img/commit_stage.png" style="width:40.0%" /></p>
 <p><br /></p>
@@ -569,17 +592,19 @@ git config --global user.email &#39;your@emailaddress.com&#39;</code></pre>
 <p><br /></p>
 <p><img src="img/commit_commit.png" style="width:40.0%" /></p>
 <p><br /></p>
-<ol start="2" style="list-style-type: decimal">
-<li><strong>Committing:</strong> Committing consists on reviewing, commenting and accepting the changes before pulling the new version of the file into the remote repository.</li>
-</ol>
+</div>
+<div id="committing" class="section level3 unlisted" number="5.4.2">
+<h3 class="unlisted" number="5.4.2"><span class="header-section-number">5.4.2</span> Committing</h3>
+<p>Committing consists on reviewing, commenting and accepting the changes before pulling the new version of the file into the remote repository.</p>
 <p>Click on ‘Commit’. A new window will appear where added code is shown in green whereas the deleted code is in red. Make sure to add a comment describing what changes you have made to your commit. This is particularly helpful should you ever want to revert to earlier versions of you repository, for example when debugging.</p>
 <p>Once ready, click on ‘Commit’.</p>
 <p><br /></p>
 <p><img src="img/commit_check.png" style="width:50.0%" /></p>
 <p><br /></p>
-<ol start="3" style="list-style-type: decimal">
-<li><strong>Pushing:</strong> Pushing takes your ‘commit’ and transfers those changes to the remote repository.</li>
-</ol>
+</div>
+<div id="pushing" class="section level3 unlisted" number="5.4.3">
+<h3 class="unlisted" number="5.4.3"><span class="header-section-number">5.4.3</span> Pushing</h3>
+<p>Pushing takes your ‘commit’ and transfers those changes to the remote repository.</p>
 <p><br /></p>
 <p><img src="img/commit_push.png" style="width:50.0%" /></p>
 <p><br /></p>
@@ -587,43 +612,51 @@ git config --global user.email &#39;your@emailaddress.com&#39;</code></pre>
 <p><br /></p>
 </div>
 </div>
-<div id="gitignore" class="section level1">
-<h1>.gitignore</h1>
+</div>
+<div id="gitignore" class="section level1" number="6">
+<h1 number="6"><span class="header-section-number">6</span> .gitignore</h1>
+<hr />
 <p>There may be files you do not want to version control (large data files, sensitive information…). When starting a new version controlled R project, R Studio automatically adds a <code>.gitignore</code> file which helps you manage which files are added to your repository. If you want to exlcude a file (or even an entire folder) from version control, simply:</p>
 <ol style="list-style-type: decimal">
 <li>Go to git pane</li>
 <li>Click on the little gearwheel and select <code>Ignore...</code></li>
 <li>In the popup window that appears, add the files you want to ignore. Note that you can use wild cards e.g. *.Rproj to exclude a group of files from the version control.</li>
-<li>Click Save.Done!</li>
+<li>Click Save. Done!</li>
 </ol>
 <p><br /></p>
 </div>
-<div id="useful-tips-and-tricks" class="section level1">
-<h1>Useful tips and tricks</h1>
+<div id="useful-tips-and-tricks" class="section level1" number="7">
+<h1 number="7"><span class="header-section-number">7</span> Useful tips and tricks</h1>
+<hr />
 <p>Now that we have learned how to use the basic features of version control using git in R Studio, let’s look at some tips an tricks that may come in handy.</p>
-<div id="creating-a-new-repository" class="section level2">
-<h2>Creating a new repository…</h2>
+<p><br/></p>
+<div id="creating-a-new-repository" class="section level2" number="7.1">
+<h2 number="7.1"><span class="header-section-number">7.1</span> Creating a new repository…</h2>
 <p>Above, we created a git repository on GitHub, then cloned it to use it R Studio. That’s an easy way to get you started, but not necessarily the most intuitive workflow. Here are two different ways of how you could create a new repository:</p>
-<div id="from-an-existing-r-project" class="section level3">
-<h3>…from an existing R project</h3>
+<p><br/></p>
+<div id="from-an-existing-r-project" class="section level3" number="7.1.1">
+<h3 number="7.1.1"><span class="header-section-number">7.1.1</span> …from an existing R project</h3>
 <p>If you have the usethis package, call <code>usethis::use_git()</code>.</p>
 <p><img src="img/use_this.png" style="width:60.0%" /> <br/><br/></p>
 <p>Alternatively, in RStudio, go to ‘Tools &gt; Project Options … &gt; Git/SVN’. Under ‘Version control system’, select ‘Git’. Confirm New Git Repository? Yes!</p>
 <p><img src="img/repo_within_rstudio.png" style="width:60.0%" /></p>
 </div>
-<div id="from-a-new-r-project" class="section level3">
-<h3>…from a new R project</h3>
+<div id="from-a-new-r-project" class="section level3" number="7.1.2">
+<h3 number="7.1.2"><span class="header-section-number">7.1.2</span> …from a new R project</h3>
 <p><br/></p>
 </div>
 </div>
-<div id="exploring-commit-history-and-file-history" class="section level2">
-<h2>Exploring commit history and file history</h2>
+<div id="exploring-commit-history-and-file-history" class="section level2" number="7.2">
+<h2 number="7.2"><span class="header-section-number">7.2</span> Exploring commit history and file history</h2>
 <p>One of the advantages of version control, is that it allows to trace back your mistakes. For example, imagine that you ended up hating your last edits to the README.md file. With version control you can effortlessly retrieve the pre-edit version of your file.</p>
 <ol style="list-style-type: decimal">
-<li>Click on the ‘History’ icon: <img src="img/History_icon.png" style="width:80.0%" /></li>
+<li>Click on the ‘History’ icon:</li>
 </ol>
 <p><br/></p>
-<p>A new window will appear with a list of the changes committed in the past <img src="img/whole_history.png" style="width:80.0%" /></p>
+<p><img src="img/History_icon.png" style="width:40.0%" /></p>
+<p><br/> <br/></p>
+<p>A new window will appear with a list of the changes committed in the past</p>
+<p><br/> <img src="img/whole_history.png" style="width:80.0%" /></p>
 <p><br/></p>
 <p>Choose the pre-edited version (Red arrow. Note:the bottom panel shows the changes happened in that given commit)</p>
 <p><br/></p>
@@ -643,11 +676,12 @@ git config --global user.email &#39;your@emailaddress.com&#39;</code></pre>
 <p><br /><br /></p>
 </div>
 </div>
-<div id="further-resources" class="section level1">
-<h1>Further Resources</h1>
+<div id="further-resources" class="section level1" number="8">
+<h1 number="8"><span class="header-section-number">8</span> Further Resources</h1>
 <hr />
 <p>Version control also allows many people to work in parallel. To start <strong>collaborating</strong> on projects using git/GitHub, checkout this <a href="https://swcarpentry.github.io/git-novice/08-collab/index.html">resource</a>.</p>
 <p>If you wanted to appear more ‘pro coder’-like could consider learning how to use git from the command line. <a href="https://rviews.rstudio.com/2020/04/23/10-commands-to-get-started-with-git/">This resource</a> may be a good start, since it directly ‘translates’ from the clicking we just did in R Studio to the shell commands.</p>
+<p>The ‘mid-way’ option between command line interfacing with git and using R Studio may be <a href="https://desktop.github.com">Git Desktop</a>.</p>
 </div>
 
 

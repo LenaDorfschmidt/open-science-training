@@ -1,6 +1,7 @@
 ---
 output:
-  html_document: 
+  html_document:
+    number_sections: true 
     toc: true
     toc_float: true
     toc_depth: 6
@@ -36,6 +37,21 @@ htmltools::tagList(rmarkdown::html_dependency_font_awesome())
 ***
 
 Version control is a system that allows you to keep track of changes done to your files. Here, we will focus on how to use git/GitHub to track *your own* changes to your project, but distributed version control systems like gitHub can also be used to collaborate on projects. Check out this [resource](https://swcarpentry.github.io/git-novice/08-collab/index.html) if you'd like to learn more about how to use git/GitHub for collaboration.
+
+<br />
+<center>
+![](img/git_workflow_general.png){width=70%}
+</center>
+
+<br />
+
+As a reminder, the git workflow mainly consists of:
+
+* `git clone`: copying a remote repository to local
+* `git add` and stage: informs git of a set of changes to be tracked
+* `git commit`: stores a set of changes as a version
+* `git pull`: merges changes from a remote repository to the local repository
+* `git push`: copies changes from our local repository to a remote repository
 
 <br /><br />
 
@@ -79,7 +95,7 @@ git config --global user.email 'your@emailaddress.com'
 
 Use `git config --list --show-origin` again to check this worked out. 
 
-<br />
+<br /><br /><br />
 
 # Creating a git repository on GitHub 
 ***
@@ -171,9 +187,8 @@ Store the personal access token. Select 'Replace these credentials' (option 2) a
 
 ```{r eval=FALSE, include=TRUE}
 gitcreds::gitcreds_set()
-
 ```
-![](img/set_token.png){width=60%}
+![](img/set_token.png){width=30%}
 
 <br/>
 <br/>
@@ -183,11 +198,17 @@ gitcreds::gitcreds_set()
 
 Until now, you repository only exists online on GitHub. We need to get it from there onto your local machine. This process is called 'cloning'. To ‘clone’ means to make a local copy of a remote GitHub repository. This only needs to be done once.
 
+
+<br />
+<center>
+![](img/git_workflow_clone.png){width=70%}
+</center>
+
 <br />
 
-### Copy the GitHub repository's URL
+### Copy the GitHub repository's URL {.unlisted}
 
-Got to the repository we just created on GitHub. Copy the URL. This should be `https://github.com/YourUsername/RepositoryName` where `YourUsername` is your GitHub username and `RepositoryRame` is the name you chose for your repository. 
+In order to clone a repoistory, go to the repository we just created on GitHub. Copy the URL. This should be `https://github.com/YourUsername/RepositoryName` where `YourUsername` is your GitHub username and `RepositoryRame` is the name you chose for your repository. 
 
 <br />
 
@@ -195,7 +216,7 @@ Got to the repository we just created on GitHub. Copy the URL. This should be `h
 
 <br />
 
-### Create a new project
+### Create a new project {.unlisted}
 
 Click on `File > New Project > Version Control > Git`. A window will popup that allows you to specify where on GitHub R Studio should look for the repoistory. 
 
@@ -219,17 +240,13 @@ Clicking on 'Create Project' will create a new directory on your computer which 
 # Use git in R Studio
 ***
 
-When you clone a repository from GitHub, all files included are downloaded onto your computer. Since the repository we created on GitHub only included the README.md file, that's all that was clone. Do practice the git workflow, let's populate the repository. 
+When you clone a repository from GitHub, all files included are downloaded onto your computer. Since the repository we created on GitHub only included the README.md file, that's all that was clone. To practice the git workflow, let's populate the repository. 
 
 <br />
 
 ## Create a folder structure
 
 Let's start with a good file structure right from the beginning. Drawing from the first session on this course, go ahead and create a folder structure for you project. I usually at least create folders for `data`, `scripts` and `results`. You can do this directly in R Studio by clicking on 'Files - New Folder'.
-
-<br />
-
-![](img/flow_folder.png){width=40%}
 
 <br />
 
@@ -251,7 +268,7 @@ Let's make an edit to an already existing file. Open the README.md and add a lin
 
 <br />
 
-![](img/flow_file.png){width=40%}
+#![](img/flow_file.png){width=40%}
 
 <br />
  
@@ -259,9 +276,21 @@ Let's make an edit to an already existing file. Open the README.md and add a lin
 
 Now that we have done some changes to our local repository, we want to 'push' them to the remote repository. Basically, we are telling the remote repository 'Hey, I here are the changes I have done, please integrate them into your version of the repository!'.
 
-This workflow consists of three stages:
+This workflow consists of three stages: staging, commit, and pushing:
 
-1. **Staging:** Select the files to be pushed. To do so, click on 'Git' at the top right. 
+<br />
+
+<center>
+![](img/git_workflow_push.png){width=70%}
+</center>
+
+
+<br />
+
+
+### Staging {.unlisted}
+
+Select the files to be pushed. To do so, click on 'Git' at the top right. 
 
 <br />
 
@@ -277,7 +306,9 @@ R Studio will show you all files that have been changed since your last commit. 
 
 <br />
 
-2. **Committing:** Committing consists on reviewing, commenting and accepting the changes before pulling the new version of the file into the remote repository. 
+### Committing {.unlisted}
+
+Committing consists on reviewing, commenting and accepting the changes before pulling the new version of the file into the remote repository. 
 
 Click on 'Commit'. A new window will appear where added code is shown in green whereas the deleted code is in red. Make sure to add a comment describing what changes you have made to your commit. This is particularly helpful should you ever want to revert to earlier versions of you repository, for example when debugging.
 
@@ -289,7 +320,9 @@ Once ready, click on 'Commit'.
 
 <br />
 
-3. **Pushing:** Pushing takes your 'commit' and transfers those changes to the remote repository. 
+### Pushing {.unlisted}
+
+Pushing takes your 'commit' and transfers those changes to the remote repository. 
 
 
 <br />
@@ -303,23 +336,29 @@ Congratulations, you have just made your first commit!
 <br />
 
 # .gitignore
+***
 
 There may be files you do not want to version control (large data files, sensitive information...). When starting a new version controlled R project, R Studio automatically adds a `.gitignore` file which helps you manage which files are added to your repository. If you want to exlcude a file (or even an entire folder) from version control, simply:
 
 1. Go to git pane
 2. Click on the little gearwheel and select `Ignore...`
 3. In the popup window that appears, add the files you want to ignore. Note that you can use wild cards e.g. *.Rproj to exclude a group of files from the version control.
-4. Click Save.Done!
+4. Click Save. Done!
 
 <br />
 
 # Useful tips and tricks
+***
 
 Now that we have learned how to use the basic features of version control using git in R Studio, let's look at some tips an tricks that may come in handy. 
+
+<br/>
 
 ## Creating a new repository...
 
 Above, we created a git repository on GitHub, then cloned it to use it R Studio. That's an easy way to get you started, but not necessarily the most intuitive workflow. Here are two different ways of how you could create a new repository:
+
+<br/>
 
 ### ...from an existing R project
 
@@ -344,12 +383,17 @@ One of the advantages of version control, is that it allows to trace back your m
 
 
  1. Click on the 'History' icon:
- ![](img/History_icon.png){width=80%}
+ 
+ <br/>
+ 
+ ![](img/History_icon.png){width=40%}
 
-<br/>
+<br/> <br/>
 
 
 A new window will appear with a list of the changes committed in the past
+
+<br/>
  ![](img/whole_history.png){width=80%}
 
 <br/>
@@ -393,6 +437,8 @@ The pre-edited file will show up and can be saved in your local directory.
 Version control also allows many people to work in parallel. To start **collaborating** on projects using git/GitHub, checkout this [resource](https://swcarpentry.github.io/git-novice/08-collab/index.html).
 
 If you wanted to appear more 'pro coder'-like could consider learning how to use git from the command line. [This resource](https://rviews.rstudio.com/2020/04/23/10-commands-to-get-started-with-git/) may be a good start, since it directly 'translates' from the clicking we just did in R Studio to the shell commands. 
+
+The 'mid-way' option between command line interfacing with git and using R Studio may be [Git Desktop](https://desktop.github.com). 
 
 
 
