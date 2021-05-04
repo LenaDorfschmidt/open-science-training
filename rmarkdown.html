@@ -778,7 +778,29 @@ output:
 <h1 number="5"><span class="header-section-number">5</span> Tips and Tricks</h1>
 <div id="file-paths" class="section level2" number="5.1">
 <h2 number="5.1"><span class="header-section-number">5.1</span> File Paths</h2>
-<p>Are you still using file paths of the like of <code>/Users/lena/Documents/...</code>? Please don’t! File paths like this mean that running your scripts on any computer other than your own becomes a path-setting-exercise. One thing that is great about R projects is that paths</p>
+<p>Are you still using file paths of the like of <code>/Users/Lena/Documents/...</code>? Please don’t! File paths like this mean that running your scripts on any computer other than your own becomes a path-setting-exercise. One thing that is great about R projects is that paths work relative to the location of the R project.</p>
+<p>Imagine this was your folder structure:</p>
+<p><br /></p>
+<p><img src="img/here_package_folder_structure.png" style="width:40.0%" /> <br /> <br /> <br /></p>
+<p>If we open our R project <code>reproducibility.Rproj</code>, we can use file paths relative to it’s location. So rather than having to navigate to <code>baker_2016_edited</code> with an absolute file path like: <code>/Users/Lena/Documents/.../data/baker_2016_edited</code>, we can now simply use <code>/data/baker_2016_edited</code>. Apart from the obvious advantage that this requires less typing, it also makes your file paths reproducible on any machine!</p>
+<p>If you haven’t done so yet, create an R project and try navigating to files in the console in R Studio.</p>
+<p>Here is a small drawback of R Markdown files though: They act like their own little universe, so all file paths in R Mardown files work relative to the location of them, rather than of the project. That’s annoying if you are working in <code>scripts/data_and_file_management.Rmd</code> and want to load in a file from <code>data/...</code>.</p>
+<p>Fortunately, there is an easy fix: the <code>here</code> package. <code>here()</code> allows you to set paths relative to the root of your R project. So from within my <code>scripts/data_and_file_management.Rmd</code> file, I could say <code>here('data/baker_2016_edited')</code>.</p>
+<p>To make this more clear, try out the following:</p>
+<ol style="list-style-type: decimal">
+<li>Install the <code>here</code> package and load the library.<br />
+</li>
+<li>Open your R project in R Studio, and open a R Markdown file in a subfolder of the project.<br />
+</li>
+<li>From the command line, try running the following commands:</li>
+</ol>
+<pre class="markdown"><code>here()
+getwd()</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li>Now run the same commands in a code block in an R Markdown file.</li>
+</ol>
+<p>While <code>getwd()</code> should differ between being run on the console and from withing a R Markdown file located in a subdirectory of the project, <code>here()</code> should be the same!</p>
+<p><br /><br /></p>
 </div>
 </div>
 <div id="further-resources" class="section level1" number="6">

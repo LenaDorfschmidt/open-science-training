@@ -393,7 +393,40 @@ output:
 
 ## File Paths
 
-Are you still using file paths of the like of `/Users/lena/Documents/...`? Please don't! File paths like this mean that running your scripts on any computer other than your own becomes a path-setting-exercise. One thing that is great about R projects is that paths  
+Are you still using file paths of the like of `/Users/Lena/Documents/...`? Please don't! File paths like this mean that running your scripts on any computer other than your own becomes a path-setting-exercise. One thing that is great about R projects is that paths work relative to the location of the R project.
+
+Imagine this was your folder structure: 
+
+<br />
+
+![](img/here_package_folder_structure.png){width=40%}
+<br /> <br /> <br />
+
+
+If we open our R project `reproducibility.Rproj`, we can use file paths relative to it's location. So rather than having to navigate to `baker_2016_edited` with an absolute file path like: `/Users/Lena/Documents/.../data/baker_2016_edited`, we can now simply use `/data/baker_2016_edited`. Apart from the obvious advantage that this requires less typing, it also makes your file paths reproducible on any machine!
+
+If you haven't done so yet, create an R project and try navigating to files in the console in R Studio. 
+
+Here is a small drawback of R Markdown files though: They act like their own little universe, so all file paths in R Mardown files work relative to the location of them, rather than of the project. That's annoying if you are working in `scripts/data_and_file_management.Rmd` and want to load in a file from `data/...`. 
+
+Fortunately, there is an easy fix: the `here` package. `here()` allows you to set paths relative to the root of your R project. So from within my `scripts/data_and_file_management.Rmd` file, I could say `here('data/baker_2016_edited')`.
+
+To make this more clear, try out the following:
+
+1. Install the `here` package and load the library.  
+2. Open your R project in R Studio, and open a R Markdown file in a subfolder of the project.  
+3. From the command line, try running the following commands:
+
+```markdown
+here()
+getwd()
+```
+3. Now run the same commands in a code block in an R Markdown file. 
+
+
+While `getwd()` should differ between being run on the console and from withing a R Markdown file located in a subdirectory of the project, `here()` should be the same!
+
+<br /><br />
 
 
 # Further resources
