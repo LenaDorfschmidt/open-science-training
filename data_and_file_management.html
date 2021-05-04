@@ -406,33 +406,31 @@ div.tocify {
 <ol style="list-style-type: decimal">
 <li>You will learn how to set up a file organization that allows for users (including your future self) to easily understand the structure of your project.</li>
 <li>You will learn how to name your files to support easy access to your project.</li>
+<li>You will practice manipulating and cleaning data using R.</li>
 </ol>
 </div>
 <p><br /><br /></p>
 <div id="data-manipulation" class="section level1" number="1">
 <h1 number="1"><span class="header-section-number">1</span> Data Manipulation</h1>
-<p>It is rarely ever the case that one receives a data set that is read to use for one’s purposes. Here, we will practice a few tricks in R to clean up a data set. Different data sets come with different issues of course, but hopefully this tutorial will:</p>
+<hr />
+<p>It is rarely ever the case that one receives a data set that is read to use for one’s purposes. Here, we will practice a few tricks in R to clean up a data set. Most importantely, this tutorial aims to introduce you to the idea of <strong>cleaning your data using scripts</strong>.</p>
+<p>In doing so, we will also:</p>
 <ol style="list-style-type: decimal">
-<li>get you used to the idea of cleaning your data using scripts.</li>
 <li>show potential issues of reading in excel files.</li>
 <li>provide examples of how to fix column names.</li>
 <li>get you thinking of issues with data cleaning.</li>
 </ol>
-<p>In particular, we will use the <code>readxl</code> and <code>tidyverse</code> packages. The first is a great resource to read in <code>.xlsx</code> files, while the latter helps us clean data, in particular by providing tools to clean up column names. The third package we are loading in here is <code>here</code> - ignore this for now, we will revisit it in the session on R Markdown.</p>
+<p>In particular, we will use the <code>readxl</code> and <code>tidyverse</code> packages. The first is a great resource to read in <code>.xlsx</code> files, while the latter helps us clean data, in particular by providing tools to clean up column names.</p>
 <p>Go ahead and download the dataset associated with the <a href="https://doi.org/10.1038/533452a">Baker (2016)</a> paper ‘1,500 scientists lift the lid on reproducibility’. Place the data in a folder called <code>data</code>. Now create an R scripts to start cleaning your data.</p>
 <p>Start by loading in the following packages:</p>
 <pre class="r"><code>library(readxl)
-library(tidyverse)
-library(here) </code></pre>
+library(tidyverse)</code></pre>
 <p>The first thing we will have noticed upon downloading the data is the spaces in the file name which should make the hair stand up on the back of your neck! We’ll deal with that in a moment!</p>
 <p><br/></p>
-</div>
-<div id="loading-in-data" class="section level1" number="2">
-<h1 number="2"><span class="header-section-number">2</span> Loading in data</h1>
+<div id="loading-in-data" class="section level2" number="1.1">
+<h2 number="1.1"><span class="header-section-number">1.1</span> Loading in data</h2>
 <p>First of all, let’s read in the data and inspect it a little:</p>
-<pre class="r"><code>data_dirty &lt;- read_excel(here(&quot;data/Reproducibility Survey Raw Data.xlsx&quot;))</code></pre>
-<pre><code>## Warning in read_fun(path = enc2native(normalizePath(path)), sheet_i = sheet, :
-## Expecting logical in CZ1141 / R1141C104: got &#39;any&#39;</code></pre>
+<pre class="r"><code>data_dirty &lt;- read_excel(&quot;data/Reproducibility Survey Raw Data.xlsx&quot;)</code></pre>
 <p>If you run <code>View(data_dirty)</code> a few things you may notice:</p>
 <ul>
 <li>This file has two rows which specify column names. For example the question ‘Have you published a manuscript in the past 3 years?’ is in in the column name, but then row one of our data contains the options ‘Yes, in an NPG journal’, ‘Yes, in a non-NPG journal’ and ‘No’.</li>
@@ -443,22 +441,26 @@ library(here) </code></pre>
 <pre class="r"><code>colnames(data_dirty)</code></pre>
 <p><br/></p>
 </div>
-<div id="merge-columnnames" class="section level1" number="3">
-<h1 number="3"><span class="header-section-number">3</span> Merge columnnames</h1>
+<div id="merge-columnnames" class="section level2" number="1.2">
+<h2 number="1.2"><span class="header-section-number">1.2</span> Merge columnnames</h2>
 <p>Now you will have noticed the column names are split across two rows.</p>
 <p>Excel files often have weird formatting issues, column names being split across rows being only one of them. Other issues you may encounter with excel files is that people may have used the first few rows of the file to provide information on their data. You can deal with that by <em>not</em> reading in the first <code>N</code> rows of a file, using <code>read_excel(..., skip=N)</code>. Fortunately, we don’t need that here, so back to topic:</p>
 <p>Let’s find the column for which important information is included int he second row:</p>
 <pre class="r"><code>replace_idx = which(!is.na(data_dirty[1,]))</code></pre>
 <p>We can now use this index to copy over the information from the second row to the column names.</p>
-<pre class="r"><code>colnames(data_dirty)[replace_idx] &lt;- data_dirty[1,replace_idx]
-data_clean &lt;- data_dirty[-1,]</code></pre>
+<pre class="r"><code>colnames(data_dirty)[replace_idx] &lt;- data_dirty[1,replace_idx]</code></pre>
+<p>Lastly, we will delete the first row of the data set, since now we have integrated all it’s relevant information into our column names. In case you haven’t seen this before: you can delete rows of your data by adding a minus before their index. This is useful, for example when you want to delete certain obseravtions from your data sets, too.</p>
+<pre class="r"><code>data_clean &lt;- data_dirty[-1,]</code></pre>
+</div>
+<div id="column-identifiers" class="section level2" number="1.3">
+<h2 number="1.3"><span class="header-section-number">1.3</span> Column Identifiers</h2>
 <p>One thing I’d always suggest when you have several columns that are related to each other in some way is to have a common column identifier. This makes data reformatting much easier! Here, we will add the prefix <code>published manuscript</code> to all columns relating to ‘Have you published a manuscript in the past 3 years?’.</p>
 <pre class="r"><code>colnames(data_clean)[c(7,8,9)] &lt;- paste0(&#39;published_manuscript-&#39;,colnames(data_clean)[c(7,8,9)])</code></pre>
 <p>You could go ahead and add other prefixed to the other columns we just edited.</p>
 <p><br/></p>
 </div>
-<div id="tidy-up-column-names" class="section level1" number="4">
-<h1 number="4"><span class="header-section-number">4</span> Tidy up column names</h1>
+<div id="tidy-up-column-names" class="section level2" number="1.4">
+<h2 number="1.4"><span class="header-section-number">1.4</span> Tidy up column names</h2>
 <p>Another common task in cleaning your data may be to tidy up column names. In this case, we may want to replace all spaces in column names by underscores and make the column names all lower case. With different data, you may come across different problems, but hopefully this helps you get an idea of how to approach the problem of renaming column names.</p>
 <p>We will get rid of the spaces in the column names and make the column names all lower case.</p>
 <p>We will use the <code>%&gt;%</code> operator from <code>dplyr</code>, which conveniently is included in <code>tidverse</code>. If you haven’t used this operator before, have a look at <a href="https://www.datacamp.com/community/tutorials/pipe-r-tutorial">these resources</a>.</p>
@@ -470,18 +472,30 @@ data_clean &lt;- data_dirty[-1,]</code></pre>
 <p>The <code>stringr</code> package included in <code>tidyverse</code> is a great tool to reformat your column names (and any other strings). To apply it more generally to your data, check out their <a href="https://github.com/rstudio/cheatsheets/blob/master/strings.pdf">cheatsheet</a>.</p>
 <p><br/></p>
 </div>
-<div id="remove-empty-lines" class="section level1" number="5">
-<h1 number="5"><span class="header-section-number">5</span> Remove empty lines</h1>
+<div id="remove-empty-lines" class="section level2" number="1.5">
+<h2 number="1.5"><span class="header-section-number">1.5</span> Remove empty lines</h2>
 <p>Lastly, as a quick check, let’s make sure we don’t have any empty rows in our data. I am just quickly plotting the number of <code>NA</code> per row.</p>
-<pre class="r"><code>hist(rowSums(is.na(data_clean)), main=&#39;Number of NAs per Row&#39;,xlab=&#39;N NA per Row&#39;)</code></pre>
-<p><img src="data_and_file_management_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
-<p>If you have a look at the questions, some are not meant to be answered by all participants, so the fact that we see a number of outliers per subject here isn’t super concerning. All I wanted to know here is that we don’t have data entry problems where complete rows are empty. Looks like we are all good!</p>
+<pre class="r"><code>pdf(&#39;missing_values.pdf&#39;)
+hist(rowSums(is.na(data_clean)), main=&#39;Number of NAs per Row&#39;,xlab=&#39;N NA per Row&#39;)
+dev.off()</code></pre>
+<pre><code>## quartz_off_screen 
+##                 2</code></pre>
+<p>If you have a look at the questions, some are not meant to be answered by all participants, so the fact that we see a number of outliers per subject here isn’t super concerning. All we want to know right now is that we don’t have data entry problems where complete rows are empty. Looks like we are all good!</p>
 <p><br/></p>
 </div>
-<div id="save-data" class="section level1" number="6">
-<h1 number="6"><span class="header-section-number">6</span> Save data</h1>
+<div id="save-data" class="section level2" number="1.6">
+<h2 number="1.6"><span class="header-section-number">1.6</span> Save data</h2>
 <p>Lastly, let’s save a clean version of our data. This will be the version we could work on from now on. As a rule, <strong>never</strong> make changes/overwrite your raw data. Always save the cleaned version as a new file.</p>
 <pre class="r"><code>write.csv(data_clean, file=here(&#39;data/data_clean.csv&#39;), row.names = F)</code></pre>
+<p><br /><br /></p>
+</div>
+</div>
+<div id="file-organization-and-naming" class="section level1" number="2">
+<h1 number="2"><span class="header-section-number">2</span> File Organization and Naming</h1>
+<hr />
+<p>In cleaning your data, you already have created your first script. We now have a raw data set and a clean data set. Further, your cleaning script has already output a first figure. Time to set up a reasonable folder structure and file naming system!</p>
+<p>Practice setting up a folder structure for this little project using the files you already have - and create a few more, if you like. Most importantly, remember your system should be extendable as the project grows. Feel free to post a screenshot of the folder structure you create in the Slack channel!</p>
+<p><br /><br /></p>
 <div class="taskbox">
 <div class="taskbox-title">
 <p><font size="5"> <i class="fas fa-exclamation-circle"></i> <strong>Summary</strong> </font></p>
@@ -493,8 +507,9 @@ data_clean &lt;- data_dirty[-1,]</code></pre>
 </div>
 <p><br /><br /></p>
 </div>
-<div id="further-resources" class="section level1" number="7">
-<h1 number="7"><span class="header-section-number">7</span> Further Resources</h1>
+<div id="further-resources" class="section level1" number="3">
+<h1 number="3"><span class="header-section-number">3</span> Further Resources</h1>
+<p>This is an extensive <a href="https://cran.r-project.org/doc/contrib/de_Jonge+van_der_Loo-Introduction_to_data_cleaning_with_R.pdf">manual</a> on data cleaning in R. It is an amazing resource for all sorts of problems that may come up in the process!</p>
 <p>Learn what copyright permissions you can use to publish your data, code and tools by having a look at <a href="https://creativecommons.org/licenses/">creative commons licenses</a>.</p>
 </div>
 

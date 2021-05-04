@@ -27,20 +27,23 @@ htmltools::tagList(rmarkdown::html_dependency_font_awesome())
 
 1. You will learn how to set up a file organization that allows for users (including your future self) to easily understand the structure of your project.
 2. You will learn how to name your files to support easy access to your project. 
+3. You will practice manipulating and cleaning data using R. 
 ::::
 
 <br /><br />
 
 # Data Manipulation
+***
 
-It is rarely ever the case that one receives a data set that is read to use for one's purposes. Here, we will practice a few tricks in R to clean up a data set. Different data sets come with different issues of course, but hopefully this tutorial will:
+It is rarely ever the case that one receives a data set that is read to use for one's purposes. Here, we will practice a few tricks in R to clean up a data set. Most importantely, this tutorial aims to introduce you to the idea of **cleaning your data using scripts**. 
 
-1. get you used to the idea of cleaning your data using scripts. 
-2. show potential issues of reading in excel files. 
+In doing so, we will also:
+
+1. show potential issues of reading in excel files. 
 2. provide examples of how to fix column names. 
 3. get you thinking of issues with data cleaning. 
 
-In particular, we will use the `readxl` and `tidyverse` packages. The first is a great resource to read in `.xlsx` files, while the latter helps us clean data, in particular by providing tools to clean up column names. The third package we are loading in here is `here` - ignore this for now, we will revisit it in the session on R Markdown.
+In particular, we will use the `readxl` and `tidyverse` packages. The first is a great resource to read in `.xlsx` files, while the latter helps us clean data, in particular by providing tools to clean up column names. 
 
 Go ahead and download the dataset associated with the [Baker (2016)](https://doi.org/10.1038/533452a) paper '1,500 scientists lift the lid on reproducibility'. Place the data in a folder called `data`. Now create an R scripts to start cleaning your data. 
 
@@ -49,20 +52,28 @@ Start by loading in the following packages:
 ```{r message=FALSE}
 library(readxl)
 library(tidyverse)
-library(here) 
+```
+
+```{r message=FALSE, include = FALSE}
+library(here)
 ```
 
 The first thing we will have noticed upon downloading the data is the spaces in the file name which should make the hair stand up on the back of your neck! We'll deal with that in a moment!
 
 <br/>
 
-# Loading in data
+## Loading in data
 
 First of all, let's read in the data and inspect it a little:
 
-```{r message=FALSE}
+```{r message=FALSE, include = FALSE}
 data_dirty <- read_excel(here("data/Reproducibility Survey Raw Data.xlsx"))
 ```
+
+```{r eval=FALSE}
+data_dirty <- read_excel("data/Reproducibility Survey Raw Data.xlsx")
+```
+
 If you run `View(data_dirty)` a few things you may notice:
 
 * This file has two rows which specify column names. For example the question 'Have you published a manuscript in the past 3 years?' is in in the column name, but then row one of our data contains the options 'Yes, in an NPG journal', 'Yes, in a non-NPG journal' and 'No'. 
@@ -77,7 +88,7 @@ colnames(data_dirty)
 
 <br/>
 
-# Merge columnnames
+## Merge columnnames
 
 Now you will have noticed the column names are split across two rows. 
 
@@ -93,8 +104,17 @@ We can now use this index to copy over the information from the second row to th
 
 ```{r}
 colnames(data_dirty)[replace_idx] <- data_dirty[1,replace_idx]
+```
+
+Lastly, we will delete the first row of the data set, since now we have integrated all it's relevant information into our column names. 
+In case you haven't seen this before: you can delete rows of your data by adding a minus before their index. This is useful, for example when you want to delete certain obseravtions from your data sets, too. 
+
+```{r}
 data_clean <- data_dirty[-1,]
 ```
+
+
+## Column Identifiers
 
 One thing I'd always suggest when you have several columns that are related to each other in some way is to have a common column identifier. This makes data reformatting much easier! Here, we will add the prefix `published manuscript` to all columns relating to 'Have you published a manuscript in the past 3 years?'. 
 
@@ -106,7 +126,7 @@ You could go ahead and add other prefixed to the other columns we just edited.
 
 <br/>
 
-# Tidy up column names
+## Tidy up column names
 
 Another common task in cleaning your data may be to tidy up column names. In this case, we may want to replace all spaces in column names by underscores and make the column names all lower case. With different data, you may come across different problems, but hopefully this helps you get an idea of how to approach the problem of renaming column names. 
 
@@ -127,19 +147,21 @@ The `stringr` package included in `tidyverse` is a great tool to reformat your c
 
 <br/>
 
-# Remove empty lines
+## Remove empty lines
 
 Lastly, as a quick check, let's make sure we don't have any empty rows in our data. I am just quickly plotting the number of `NA` per row. 
 
 ```{r}
+pdf('missing_values.pdf')
 hist(rowSums(is.na(data_clean)), main='Number of NAs per Row',xlab='N NA per Row')
+dev.off()
 ```
 
-If you have a look at the questions, some are not meant to be answered by all participants, so the fact that we see a number of outliers per subject here isn't super concerning. All I wanted to know here is that we don't have data entry problems where complete rows are empty. Looks like we are all good!
+If you have a look at the questions, some are not meant to be answered by all participants, so the fact that we see a number of outliers per subject here isn't super concerning. All we want to know right now is that we don't have data entry problems where complete rows are empty. Looks like we are all good!
 
 <br/>
 
-# Save data
+## Save data
 
 Lastly, let's save a clean version of our data. This will be the version we could work on from now on. As a rule, **never** make changes/overwrite your raw data. Always save the cleaned version as a new file. 
 
@@ -147,6 +169,16 @@ Lastly, let's save a clean version of our data. This will be the version we coul
 write.csv(data_clean, file=here('data/data_clean.csv'), row.names = F)
 ```
 
+<br /><br />
+
+# File Organization and Naming
+***
+
+In cleaning your data, you already have created your first script. We now have a raw data set and a clean data set. Further, your cleaning script has already output a first figure. Time to set up a reasonable folder structure and file naming system!
+
+Practice setting up a folder structure for this little project using the files you already have - and create a few more, if you like. Most importantly, remember your system should be extendable as the project grows. Feel free to post a screenshot of the folder structure you create in the Slack channel!
+
+<br /><br />
 
 :::: {.taskbox data-latex=""}
 :::: {.taskbox-title }
@@ -163,6 +195,9 @@ write.csv(data_clean, file=here('data/data_clean.csv'), row.names = F)
 
 # Further Resources
 
+This is an extensive [manual](https://cran.r-project.org/doc/contrib/de_Jonge+van_der_Loo-Introduction_to_data_cleaning_with_R.pdf) on data cleaning in R. It is an amazing resource for all sorts of problems that may come up in the process!
+
 Learn what copyright permissions you can use to publish your data, code and tools by having a look at [creative commons licenses](https://creativecommons.org/licenses/). 
+
 
 
