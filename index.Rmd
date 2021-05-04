@@ -86,13 +86,13 @@ Further, you may want to use your “.ac.uk” email for your account, since thi
 
 ## Install Git
 
-First, let's figure out if you already have git installed. Go to the shell and enter `which git` to request the path to your Git executable:
+First, let's figure out if you already have git installed. Go to the command prompt/terminal/shell and enter `which git` to request the path to your Git executable:
 
 ```
 which git
 ## /usr/bin/git
 ```
-If this is successfull: great! Move on to the next section. If not, then you should install git. 
+If this is successfull: great! Move on to the next section. If not, then you should install git. The installation will likely open loads of pop up windows asking you to confirm settings. Just go with the default settings for all of them.
 
 ## Mac
 If you have homebrew installed, you can type `brew install git` in the command line. Should you not have homebrew installed, you can also install git from here: http://git-scm.com/downloads

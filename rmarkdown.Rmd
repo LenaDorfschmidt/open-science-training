@@ -212,7 +212,7 @@ You can add codeblocks either by clicking on `Code > Insert Chunk`, or by adding
 ````
 
 For this demonstration, we are using data from *1,500 scientists lift the lid on reproducibility
-*, (Baker, 2016). Check out the article [here](https://www.nature.com/news/1-500-scientists-lift-the-lid-on-reproducibility-1.19970). The original data is available through [figshare](https://figshare.com/articles/Nature_Reproducibility_survey/3394951/1). For this practical, download [this edited version](https://www.vle.cam.ac.uk/mod/folder/view.php?id=14888882). 
+*, (Baker, 2016). Check out the article [here](https://www.nature.com/news/1-500-scientists-lift-the-lid-on-reproducibility-1.19970). The original data is available through [figshare](https://figshare.com/articles/Nature_Reproducibility_survey/3394951/1). For this practical, download [this edited version](https://www.vle.cam.ac.uk/mod/folder/view.php?id=14888882). Unzip the folder and place the file `baker2016-edited.csv` into a folder `data/` (or change the paths below).
 
 
 Go ahead and create a new code chunk. In that code chunk, type the following to load in the data:
